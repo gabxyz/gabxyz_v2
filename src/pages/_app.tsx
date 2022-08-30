@@ -1,8 +1,22 @@
-import '../styles/globals.css'
 import type { AppProps } from 'next/app'
+import Head from 'next/head'
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+import GlobalStyles from 'styles/global'
+
+function App({ Component, pageProps }: AppProps) {
+  return (
+    <>
+      <Head>
+        <title>Gabxyz</title>
+        <meta
+          name="description"
+          content="Personal portfolio project built with TypeScript, React, NextJS and Styled Components"
+        />
+      </Head>
+      <GlobalStyles />
+      <Component {...pageProps} />
+    </>
+  )
 }
 
-export default MyApp
+export default App
