@@ -1,11 +1,10 @@
-type Props = {
-  title: string
-}
+import Box from 'components/Box'
+import ThemeSwitcher from 'components/ThemeSwitcher'
 
-export default function Home({ title = 'Hello World!' }: Props) {
+export default function Home() {
   return (
-    <div>
-      <h1>{title}</h1>
-    </div>
+    <Box>
+      <ThemeSwitcher />
+    </Box>
   )
 }
