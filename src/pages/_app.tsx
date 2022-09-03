@@ -10,6 +10,7 @@ function App({ Component, pageProps }: AppProps) {
       attribute="class"
       value={{ light: 'light-theme', dark: darkTheme.className }}
       disableTransitionOnChange
+      defaultTheme="dark"
     >
       <Head>
         <title>Gabxyz</title>
