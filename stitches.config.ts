@@ -1,13 +1,4 @@
-import {
-  slate,
-  slateDark,
-  teal,
-  tealDark,
-  mint,
-  mintDark,
-  green,
-  greenDark
-} from '@radix-ui/colors'
+import { mauve, mauveDark, violet, violetDark, blackA } from '@radix-ui/colors'
 
 import type * as Stitches from '@stitches/react'
 import { createStitches } from '@stitches/react'
@@ -24,49 +15,49 @@ export const {
 } = createStitches({
   theme: {
     colors: {
-      ...slate,
-      ...teal,
-      ...mint,
-      ...green,
+      ...mauve,
+      ...violet,
+      ...blackA,
 
-      hiContrast: '$slate12',
+      hiContrast: '$mauve12',
       loContrast: 'white'
     },
     fonts: {
-      default: 'system-ui'
+      default:
+        'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif'
+    },
+    fontWeights: {
+      light: 300,
+      normal: 400,
+      bold: 600,
+      bolder: 700
     },
     space: {
-      1: '5px',
-      2: '10px',
-      3: '15px',
-      4: '20px',
-      5: '25px',
-      6: '35px',
-      7: '45px',
-      8: '65px',
-      9: '80px'
+      xxsmall: '8px',
+      xsmall: '16px',
+      small: '24px',
+      medium: '32px',
+      large: '40px',
+      xlarge: '48px',
+      xxlarge: '56px'
     },
     sizes: {
-      1: '5px',
-      2: '10px',
-      3: '15px',
-      4: '20px',
-      5: '25px',
-      6: '35px',
-      7: '45px',
-      8: '65px',
-      9: '80px'
+      xxsmall: '8px',
+      xsmall: '16px',
+      small: '24px',
+      medium: '32px',
+      large: '40px',
+      xlarge: '48px',
+      xxlarge: '56px'
     },
     fontSizes: {
-      1: '12px',
-      2: '13px',
-      3: '15px',
-      4: '17px',
-      5: '19px',
-      6: '21px',
-      7: '27px',
-      8: '35px',
-      9: '59px'
+      xsmall: '12px',
+      small: '14px',
+      medium: '16px',
+      large: '18px',
+      xlarge: '20px',
+      xxlarge: '28px',
+      huge: '52px'
     },
     radii: {
       1: '4px',
@@ -166,17 +157,42 @@ export const {
 
 export const darkTheme = createTheme('dark-theme', {
   colors: {
-    ...slateDark,
-    ...tealDark,
-    ...mintDark,
-    ...greenDark,
+    ...mauveDark,
+    ...violetDark,
 
-    hiContrast: '$slate12',
-    loContrast: '$slate1'
+    hiContrast: '$mauve12',
+    loContrast: '$mauve1'
   }
 })
 
 export const globalStyles = globalCss({
+  '@font-face': [
+    {
+      fontFamily: 'Inter',
+      fontStyle: 'normal',
+      fontWeight: 300,
+      src: 'local(""), url("/fonts/inter-v12-latin-300.woff2") format("woff2")'
+    },
+    {
+      fontFamily: 'Inter',
+      fontStyle: 'normal',
+      fontWeight: 400,
+      src: 'local(""), url("/fonts/inter-v12-latin-400.woff2") format("woff2")'
+    },
+    {
+      fontFamily: 'Inter',
+      fontStyle: 'normal',
+      fontWeight: 600,
+      src: 'local(""), url("/fonts/inter-v12-latin-600.woff2") format("woff2")'
+    },
+    {
+      fontFamily: 'Inter',
+      fontStyle: 'normal',
+      fontWeight: 700,
+      src: 'local(""), url("/fonts/inter-v12-latin-700.woff2") format("woff2")'
+    }
+  ],
+
   '*': {
     margin: 0,
     padding: 0,
@@ -193,7 +209,8 @@ export const globalStyles = globalCss({
   },
   body: {
     fontFamily: '$default',
-    lineHeight: 1,
+    fontSize: '$medium',
+    lineHeight: 1.75,
     backgroundColor: '$loContrast',
     color: '$hiContrast'
   }
