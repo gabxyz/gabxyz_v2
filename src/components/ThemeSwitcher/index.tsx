@@ -18,11 +18,7 @@ const ThemeSwitcher = () => {
   }
 
   return (
-    <Box
-      css={{
-        padding: '$4'
-      }}
-    >
+    <Box>
       <S.Toggle
         defaultPressed={theme === 'dark'}
         onPressedChange={() => setTheme(theme === 'light' ? 'dark' : 'light')}
