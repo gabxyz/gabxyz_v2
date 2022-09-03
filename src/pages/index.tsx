@@ -1,10 +1,9 @@
-import Box from 'components/Box'
-import ThemeSwitcher from 'components/ThemeSwitcher'
+import Layout from 'templates/Layout'
 
 export default function Home() {
   return (
-    <Box>
-      <ThemeSwitcher />
-    </Box>
+    <Layout>
+      <h2>Content</h2>
+    </Layout>
   )
 }
