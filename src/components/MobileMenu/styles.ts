@@ -57,7 +57,14 @@ export const StyledTitle = styled(DialogPrimitive.Title, {
   margin: 0,
   fontWeight: '$bolder',
   fontSize: '$small',
-  color: '$mauve11'
+  color: '$mauve12'
+})
+export const StyledDescription = styled(DialogPrimitive.Description, {
+  margin: 0,
+  fontWeight: '$light',
+  fontSize: '$xsmall',
+  color: '$mauve11',
+  textAlign: 'center'
 })
 
 export const IconButton = styled('button', {
@@ -69,6 +76,25 @@ export const IconButton = styled('button', {
   alignItems: 'center',
   justifyContent: 'flex-start',
   cursor: 'pointer'
+})
+
+export const SocialButton = styled('button', {
+  all: 'unset',
+  bc: '$mauve5',
+  color: '$mauve12',
+  size: '$medium',
+  br: '$2',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  cursor: 'pointer',
+  '&:hover': {
+    bc: '$mauve4'
+  },
+  '&:focus': { boxShadow: `0 0 0 1px $colors$mauve7` },
+  '& svg': {
+    size: 15
+  }
 })
 
 export const PagesWrapper = styled('ul', {
@@ -91,7 +117,7 @@ export const ItemLink = styled('a', {
   py: 6,
   fontSize: '$small',
   '&.active': {
-    color: '$mauve1',
+    color: '$loContrast',
     backgroundImage:
       'linear-gradient(90deg, hsla(252, 71%, 84%, 1) 40%, hsla(333, 73%, 91%, 1) 100%)'
   }

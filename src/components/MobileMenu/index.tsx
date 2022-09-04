@@ -32,7 +32,8 @@ const MobileMenu = () => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            m: '$xsmall'
+            my: '$xsmall',
+            pl: '$xsmall'
           }}
         >
           <S.MenuClose asChild>
@@ -44,15 +45,27 @@ const MobileMenu = () => {
             css={{
               display: 'flex',
               alignItems: 'center',
+              justifyContent: 'flex-end',
               gap: '$xxsmall',
-              height: '$small',
-              '& svg': { size: '$xsmall' }
+              width: '100%',
+              height: '$small'
             }}
           >
-            <S.StyledTitle>Gabriel Rodrigues</S.StyledTitle>
+            <Box css={{ lineHeight: 1.5 }}>
+              <S.StyledTitle>Gabriel Rodrigues</S.StyledTitle>
+              <S.StyledDescription>Front-End Developer</S.StyledDescription>
+            </Box>
             <Separator orientation="vertical" />
-            <GitHubLogoIcon />
-            <LinkedInLogoIcon />
+            <Box
+              css={{ display: 'flex', alignItems: 'center', gap: '$xxsmall' }}
+            >
+              <S.SocialButton>
+                <GitHubLogoIcon />
+              </S.SocialButton>
+              <S.SocialButton>
+                <LinkedInLogoIcon />
+              </S.SocialButton>
+            </Box>
           </Box>
         </Box>
         <S.PagesWrapper>
