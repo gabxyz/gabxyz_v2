@@ -14,7 +14,11 @@ const ThemeSwitcher = () => {
   }, [])
 
   if (!mounted) {
-    return null
+    return (
+      <Box>
+        <S.Toggle />
+      </Box>
+    )
   }
 
   return (

@@ -15,5 +15,5 @@ export const Toggle = styled(TogglePrimitive.Root, {
   '&:hover': {
     bc: '$mauve4'
   },
-  '&:focus': { boxShadow: `0 0 0 1px $colors$mauve8` }
+  '&:focus': { boxShadow: `0 0 0 1px $colors$mauve7` }
 })
