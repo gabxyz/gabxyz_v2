@@ -20,7 +20,7 @@ export const {
       ...blackA,
 
       hiContrast: '$mauve12',
-      loContrast: 'white'
+      loContrast: '$mauve1'
     },
     fonts: {
       default:
@@ -210,7 +210,7 @@ export const globalStyles = globalCss({
   body: {
     fontFamily: '$default',
     fontSize: '$medium',
-    lineHeight: 1.75,
+    lineHeight: 1.8,
     backgroundColor: '$loContrast',
     color: '$hiContrast'
   }
