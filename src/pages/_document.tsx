@@ -1,16 +1,10 @@
-import { Head, Html, Main, NextScript } from 'next/document'
-import { getCssText } from 'stitches.config'
+import { Html, Head, Main, NextScript } from 'next/document'
 
-export default function MyDocument() {
+export default function Document() {
   return (
-    <Html lang="en">
-      <Head>
-        <style
-          id="stitches"
-          dangerouslySetInnerHTML={{ __html: getCssText() }}
-        />
-      </Head>
-      <body>
+    <Html>
+      <Head />
+      <body className="bg-mauve-1 font-medium text-mauve-12">
         <Main />
         <NextScript />
       </body>
