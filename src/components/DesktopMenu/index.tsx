@@ -1,3 +1,8 @@
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import type { ReactElement } from 'react'
+
+import * as NavMenu from '@radix-ui/react-navigation-menu'
 import {
   CodeIcon,
   GitHubLogoIcon,
@@ -5,73 +10,79 @@ import {
   InfoCircledIcon,
   LinkedInLogoIcon
 } from '@radix-ui/react-icons'
+
 import Separator from 'components/Separator'
-import Box from 'components/Box'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import * as S from './styles'
+
+import { motion } from 'framer-motion'
 
 const DesktopMenu = () => {
   const router = useRouter()
-  const isActive = router.asPath
+  const currentPath = router.asPath
+
+  const pages: { title: string; path: string; icon: ReactElement }[] = [
+    {
+      title: 'Home',
+      path: '/',
+      icon: <HomeIcon />
+    },
+    {
+      title: 'Portfolio',
+      path: '/portfolio',
+      icon: <CodeIcon />
+    },
+    {
+      title: 'About',
+      path: '/about',
+      icon: <InfoCircledIcon />
+    }
+  ]
 
   return (
-    <Box
-      css={{
-        display: 'flex',
-        justifyContent: 'space-between'
-      }}
-    >
-      <Box
-        css={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '$xxsmall'
-        }}
-      >
-        <Box css={{ lineHeight: 1.5 }}>
-          <S.Name>Gabriel Rodrigues</S.Name>
-          <S.Description>Front-End Developer</S.Description>
-        </Box>
+    <div className="flex items-center justify-between">
+      <header className="flex items-center gap-2">
+        <div>
+          <h1 className="text-xl  font-semibold">Gabriel Rodrigues</h1>
+          <h2 className="text-base text-mauve-11 font-light ml-px">
+            Front-End Developer
+          </h2>
+        </div>
+        <span className="h-10">
+          <Separator orientation="vertical" />
+        </span>
+        <div className="flex gap-2">
+          <button className="bg-mauve-3 w-10 h-10 flex items-center justify-center rounded-md hover:bg-mauve-4">
+            <GitHubLogoIcon />
+          </button>
+          <button className="bg-mauve-3 w-10 h-10 flex items-center justify-center rounded-md hover:bg-mauve-4">
+            <LinkedInLogoIcon />
+          </button>
+        </div>
+      </header>
 
-        <Separator
-          css={{ '&[data-orientation=vertical]': { height: '90%' } }}
-          orientation="vertical"
-        />
-        <S.IconButton>
-          <GitHubLogoIcon />
-        </S.IconButton>
-        <S.IconButton>
-          <LinkedInLogoIcon />
-        </S.IconButton>
-      </Box>
-      <Box css={{ alignSelf: 'center' }}>
-        <S.MenuWrapper>
-          <S.MenuList>
-            <Link href="/" passHref>
-              <S.MenuLink active={isActive === '/'}>
-                <HomeIcon />
-                Home
-              </S.MenuLink>
+      <NavMenu.Root className="pt-3">
+        <NavMenu.List className="flex gap-2 list-none">
+          {pages.map(({ title, path, icon }) => (
+            <Link href={path} passHref key={title}>
+              <NavMenu.Link className="w-24 h-8 flex items-center justify-center gap-1 relative text-sm rounded-md hover:bg-mauve-4">
+                {icon}
+                {title}
+                {path === currentPath && (
+                  <motion.span
+                    className="absolute inset-x-0 -bottom-1 h-px bg-gradient-to-r from-violet-9 to-crimson-9"
+                    layoutId="underline"
+                    transition={{
+                      type: 'spring',
+                      duration: 0.8,
+                      stiffness: 80
+                    }}
+                  />
+                )}
+              </NavMenu.Link>
             </Link>
-
-            <Link href="/portfolio" passHref>
-              <S.MenuLink active={isActive === '/portfolio'}>
-                <CodeIcon />
-                Portfolio
-              </S.MenuLink>
-            </Link>
-
-            <Link href="/about" passHref>
-              <S.MenuLink active={isActive === '/about'}>
-                <InfoCircledIcon />
-                About
-              </S.MenuLink>
-            </Link>
-          </S.MenuList>
-        </S.MenuWrapper>
-      </Box>
-    </Box>
+          ))}
+        </NavMenu.List>
+      </NavMenu.Root>
+    </div>
   )
 }
 

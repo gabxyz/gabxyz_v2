@@ -1,10 +1,13 @@
 import * as SeparatorPrimitive from '@radix-ui/react-separator'
-import { styled } from 'stitches.config'
 
-const Separator = styled(SeparatorPrimitive.Root, {
-  bc: '$mauve6',
-  '&[data-orientation=horizontal]': { height: 1, width: '100%' },
-  '&[data-orientation=vertical]': { height: '100%', width: 1 }
-})
+type SeparatorProps = {
+  orientation?: SeparatorPrimitive.Orientation
+}
 
+const Separator = ({ orientation = 'horizontal' }: SeparatorProps) => (
+  <SeparatorPrimitive.Root
+    orientation={orientation}
+    className="bg-mauve-6 rdx-orientation-horizontal:w-full rdx-orientation-horizontal:h-px  rdx-orientation-vertical:h-full rdx-orientation-vertical:w-px"
+  />
+)
 export default Separator

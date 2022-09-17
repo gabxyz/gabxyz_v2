@@ -1,3 +1,9 @@
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { ReactElement, useState } from 'react'
+import cn from 'classnames'
+
+import * as DialogMenu from '@radix-ui/react-dialog'
 import {
   CodeIcon,
   Cross1Icon,
@@ -7,99 +13,125 @@ import {
   InfoCircledIcon,
   LinkedInLogoIcon
 } from '@radix-ui/react-icons'
-import Box from 'components/Box'
+
 import Separator from 'components/Separator'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { useState } from 'react'
-import * as S from './styles'
+import { motion } from 'framer-motion'
 
 const MobileMenu = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [open, setOpen] = useState(false)
   const router = useRouter()
+  const currentPath = router.asPath
+
+  const header = {
+    hidden: { opacity: 0, y: -20 },
+    show: { opacity: 1, y: 0 }
+  }
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.2,
+        staggerChildren: 0.1
+      }
+    }
+  }
+
+  const item = {
+    hidden: { opacity: 0, x: -50 },
+    show: { opacity: 1, x: 0 }
+  }
+
+  const pages: { title: string; path: string; icon: ReactElement }[] = [
+    {
+      title: 'Home',
+      path: '/',
+      icon: <HomeIcon />
+    },
+    {
+      title: 'Portfolio',
+      path: '/portfolio',
+      icon: <CodeIcon />
+    },
+    {
+      title: 'About',
+      path: '/about',
+      icon: <InfoCircledIcon />
+    }
+  ]
 
   return (
-    <S.MenuWrapper onOpenChange={() => setIsOpen(!isOpen)}>
-      <S.MenuTrigger asChild>
-        <S.IconButton aria-label="Open Menu">
+    <>
+      <DialogMenu.Root open={open} onOpenChange={() => setOpen(!open)}>
+        <DialogMenu.Trigger className="bg-mauve-3 w-8 h-8 flex items-center justify-center rounded-md">
           <HamburgerMenuIcon />
-        </S.IconButton>
-      </S.MenuTrigger>
-      <S.StyledOverlay />
-      <S.MenuContent>
-        <Box
-          css={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            my: '$xsmall',
-            pl: '$xsmall'
-          }}
-        >
-          <S.MenuClose asChild>
-            <S.IconButton aria-label="Close Menu">
+        </DialogMenu.Trigger>
+
+        <DialogMenu.Overlay className="bg-blackA-9 fixed inset-0 z-20 transition-all duration-200 ease-in-out" />
+        <DialogMenu.Content className="rdx-state-open:animate-open-menu rdx-state-closed:animate-close-menu inset-0 bg-mauve-1 fixed w-3/4 p-2 z-30 border-r border-mauve-6">
+          <div className="flex items-center justify-between mt-4 ml-4">
+            <DialogMenu.Close className="bg-mauve-3 w-8 h-8 flex items-center justify-center rounded-md">
               <Cross1Icon />
-            </S.IconButton>
-          </S.MenuClose>
-          <Box
-            css={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'flex-end',
-              gap: '$xxsmall',
-              width: '100%',
-              height: '$small'
-            }}
-          >
-            <Box css={{ lineHeight: 1.5 }}>
-              <S.StyledTitle>Gabriel Rodrigues</S.StyledTitle>
-              <S.StyledDescription>Front-End Developer</S.StyledDescription>
-            </Box>
-            <Separator orientation="vertical" />
-            <Box
-              css={{ display: 'flex', alignItems: 'center', gap: '$xxsmall' }}
+            </DialogMenu.Close>
+            <motion.div
+              variants={container}
+              initial="hidden"
+              animate="show"
+              className="flex items-center justify-between gap-2"
             >
-              <S.SocialButton>
-                <GitHubLogoIcon />
-              </S.SocialButton>
-              <S.SocialButton>
-                <LinkedInLogoIcon />
-              </S.SocialButton>
-            </Box>
-          </Box>
-        </Box>
-        <S.PagesWrapper>
-          <S.ItemWrapper>
-            <Link href="/" passHref>
-              <S.ItemLink className={router.pathname === '/' ? 'active' : ''}>
-                <HomeIcon />
-                Home
-              </S.ItemLink>
-            </Link>
-          </S.ItemWrapper>
-          <S.ItemWrapper>
-            <Link href="/portfolio" passHref>
-              <S.ItemLink
-                className={router.pathname === '/portfolio' ? 'active' : ''}
-              >
-                <CodeIcon />
-                Portfolio
-              </S.ItemLink>
-            </Link>
-          </S.ItemWrapper>
-          <S.ItemWrapper>
-            <Link href="/about" passHref>
-              <S.ItemLink
-                className={router.pathname === '/about' ? 'active' : ''}
-              >
-                <InfoCircledIcon />
-                About
-              </S.ItemLink>
-            </Link>
-          </S.ItemWrapper>
-        </S.PagesWrapper>
-      </S.MenuContent>
-    </S.MenuWrapper>
+              <div>
+                <motion.h1 variants={header} className="font-semibold text-sm">
+                  Gabriel Rodrigues
+                </motion.h1>
+                <motion.h2
+                  variants={header}
+                  className="text-xs font-light text-mauve-11 ml-px"
+                >
+                  Front-End Developer
+                </motion.h2>
+              </div>
+              <motion.span variants={header} className="h-10">
+                <Separator orientation="vertical" />
+              </motion.span>
+              <motion.div variants={header} className="flex items-center gap-2">
+                <button className="bg-mauve-3 w-8 h-8 flex items-center justify-center rounded-md">
+                  <GitHubLogoIcon />
+                </button>
+                <button className="bg-mauve-3 w-8 h-8 flex items-center justify-center rounded-md">
+                  <LinkedInLogoIcon />
+                </button>
+              </motion.div>
+            </motion.div>
+          </div>
+          <motion.ul
+            variants={container}
+            initial="hidden"
+            animate="show"
+            className="flex flex-col gap-2 my-8"
+          >
+            {pages.map(({ title, path, icon }) => (
+              <motion.li variants={item} key={title}>
+                <Link href={path} passHref key={title}>
+                  <a
+                    className={cn(
+                      path === currentPath
+                        ? 'font-semibold bg-gradient-to-r from-violet-9 to-crimson-9'
+                        : 'font-light',
+                      'w-full flex items-center justify-start gap-2 rounded-md text-sm p-2'
+                    )}
+                    onClick={() => setOpen(false)}
+                  >
+                    {icon}
+                    {title}
+                  </a>
+                </Link>
+              </motion.li>
+            ))}
+          </motion.ul>
+        </DialogMenu.Content>
+      </DialogMenu.Root>
+    </>
   )
 }
 export default MobileMenu
