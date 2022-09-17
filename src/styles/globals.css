@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply max-h-screen overflow-hidden text-base antialiased;
+  }
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  font-variation-ligatures: normal;
+  src: url('/fonts/Inter.var.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrainsMono';
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  font-variation-ligatures: normal;
+  src: url('/fonts/JetBrainsMono.var.woff2') format('woff2');
+}
