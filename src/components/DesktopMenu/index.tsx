@@ -14,6 +14,8 @@ import {
 import Separator from 'components/Separator'
 
 import { motion } from 'framer-motion'
+import Button from 'components/Button'
+import ThemeSwitcher from 'components/ThemeSwitcher'
 
 const DesktopMenu = () => {
   const router = useRouter()
@@ -42,7 +44,7 @@ const DesktopMenu = () => {
       <header className="flex items-center gap-2">
         <div>
           <h1 className="text-xl  font-semibold">Gabriel Rodrigues</h1>
-          <h2 className="text-base text-mauve-11 font-light ml-px">
+          <h2 className="ml-px text-base font-light text-mauve-11">
             Front-End Developer
           </h2>
         </div>
@@ -50,38 +52,48 @@ const DesktopMenu = () => {
           <Separator orientation="vertical" />
         </span>
         <div className="flex gap-2">
-          <button className="bg-mauve-3 w-10 h-10 flex items-center justify-center rounded-md hover:bg-mauve-4">
+          <button className="flex h-10 w-10 items-center justify-center rounded-md bg-mauve-3 hover:bg-mauve-4">
             <GitHubLogoIcon />
           </button>
-          <button className="bg-mauve-3 w-10 h-10 flex items-center justify-center rounded-md hover:bg-mauve-4">
+          <button className="flex h-10 w-10 items-center justify-center rounded-md bg-mauve-3 hover:bg-mauve-4">
             <LinkedInLogoIcon />
           </button>
         </div>
       </header>
-
-      <NavMenu.Root className="pt-3">
-        <NavMenu.List className="flex gap-2 list-none">
-          {pages.map(({ title, path, icon }) => (
-            <Link href={path} passHref key={title}>
-              <NavMenu.Link className="w-24 h-8 flex items-center justify-center gap-1 relative text-sm rounded-md hover:bg-mauve-4">
-                {icon}
-                {title}
-                {path === currentPath && (
-                  <motion.span
-                    className="absolute inset-x-0 -bottom-1 h-px bg-gradient-to-r from-violet-9 to-crimson-9"
-                    layoutId="underline"
-                    transition={{
-                      type: 'spring',
-                      duration: 0.8,
-                      stiffness: 80
-                    }}
-                  />
-                )}
-              </NavMenu.Link>
-            </Link>
-          ))}
-        </NavMenu.List>
-      </NavMenu.Root>
+      <div className="flex items-center justify-between gap-4">
+        <NavMenu.Root>
+          <NavMenu.List className="flex list-none gap-4">
+            {pages.map(({ path, icon }) => (
+              <NavMenu.Item key={path}>
+                <Link href={path} passHref>
+                  <Button
+                    variant={path === currentPath ? 'active' : 'default'}
+                    size="lg"
+                    as={NavMenu.Link}
+                  >
+                    {icon}
+                    {path === currentPath && (
+                      <motion.span
+                        className="absolute inset-x-0 -bottom-1.5 h-px bg-gradient-to-r from-violet-9 to-crimson-9"
+                        layoutId="underline"
+                        transition={{
+                          type: 'spring',
+                          duration: 0.8,
+                          stiffness: 80
+                        }}
+                      />
+                    )}
+                  </Button>
+                </Link>
+              </NavMenu.Item>
+            ))}
+          </NavMenu.List>
+        </NavMenu.Root>
+        <span className="h-8">
+          <Separator orientation="vertical" />
+        </span>
+        <ThemeSwitcher />
+      </div>
     </div>
   )
 }

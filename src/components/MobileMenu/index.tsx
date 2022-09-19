@@ -64,14 +64,14 @@ const MobileMenu = () => {
   return (
     <>
       <DialogMenu.Root open={open} onOpenChange={() => setOpen(!open)}>
-        <DialogMenu.Trigger className="bg-mauve-3 w-8 h-8 flex items-center justify-center rounded-md">
+        <DialogMenu.Trigger className="flex h-8 w-8 items-center justify-center rounded-md bg-mauve-3">
           <HamburgerMenuIcon />
         </DialogMenu.Trigger>
 
-        <DialogMenu.Overlay className="bg-blackA-9 fixed inset-0 z-20 transition-all duration-200 ease-in-out" />
-        <DialogMenu.Content className="rdx-state-open:animate-open-menu rdx-state-closed:animate-close-menu inset-0 bg-mauve-1 fixed w-3/4 p-2 z-30 border-r border-mauve-6">
-          <div className="flex items-center justify-between mt-4 ml-4">
-            <DialogMenu.Close className="bg-mauve-3 w-8 h-8 flex items-center justify-center rounded-md">
+        <DialogMenu.Overlay className="fixed inset-0 z-20 bg-blackA-9 transition-all duration-200 ease-in-out" />
+        <DialogMenu.Content className="fixed inset-0 z-30 w-3/4 border-r border-mauve-6 bg-mauve-1 p-2 rdx-state-closed:animate-close-menu rdx-state-open:animate-open-menu">
+          <div className="mt-4 ml-4 flex items-center justify-between">
+            <DialogMenu.Close className="flex h-8 w-8 items-center justify-center rounded-md bg-mauve-3">
               <Cross1Icon />
             </DialogMenu.Close>
             <motion.div
@@ -81,12 +81,12 @@ const MobileMenu = () => {
               className="flex items-center justify-between gap-2"
             >
               <div>
-                <motion.h1 variants={header} className="font-semibold text-sm">
+                <motion.h1 variants={header} className="text-sm font-semibold">
                   Gabriel Rodrigues
                 </motion.h1>
                 <motion.h2
                   variants={header}
-                  className="text-xs font-light text-mauve-11 ml-px"
+                  className="ml-px text-xs font-light text-mauve-11"
                 >
                   Front-End Developer
                 </motion.h2>
@@ -95,10 +95,10 @@ const MobileMenu = () => {
                 <Separator orientation="vertical" />
               </motion.span>
               <motion.div variants={header} className="flex items-center gap-2">
-                <button className="bg-mauve-3 w-8 h-8 flex items-center justify-center rounded-md">
+                <button className="flex h-8 w-8 items-center justify-center rounded-md bg-mauve-3">
                   <GitHubLogoIcon />
                 </button>
-                <button className="bg-mauve-3 w-8 h-8 flex items-center justify-center rounded-md">
+                <button className="flex h-8 w-8 items-center justify-center rounded-md bg-mauve-3">
                   <LinkedInLogoIcon />
                 </button>
               </motion.div>
@@ -108,7 +108,7 @@ const MobileMenu = () => {
             variants={container}
             initial="hidden"
             animate="show"
-            className="flex flex-col gap-2 my-8"
+            className="my-8 flex flex-col gap-2"
           >
             {pages.map(({ title, path, icon }) => (
               <motion.li variants={item} key={title}>
