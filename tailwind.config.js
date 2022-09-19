@@ -70,6 +70,12 @@ module.exports = {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
         mono: ['JetBrainsMono', ...defaultTheme.fontFamily.mono]
       },
+      boxShadow: {
+        'button-hover':
+          '0px 0px 4px 0px var(--violet7), 0px 0px 4px 0px var(--crimson7)',
+        'button-focus':
+          '0px 0px 4px 0px var(--violet8), 0px 0px 4px 0px var(--crimson8)'
+      },
       keyframes: {
         in: {
           '0%': {

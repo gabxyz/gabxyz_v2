@@ -8,6 +8,32 @@
   }
 }
 
+@layer components {
+  .btn {
+   @apply bg-mauve-3 flex items-center justify-center rounded-md cursor-pointer relative hover:shadow-button-hover focus:shadow-button-focus outline-none;
+  }
+  .sm {
+    @apply h-8 w-8 md:h-9 md:w-9;
+  }
+
+  .md {
+    @apply h-9 w-9 md:h-10 md:w-10;
+  }
+
+  .lg {
+    @apply h-10 w-10 md:h-11 md:w-11;
+  }
+
+  .default {
+    @apply bg-gradient-to-b hover:from-violet-4 hover:to-crimson-4;
+  }
+
+  .active {
+    @apply bg-gradient-to-b from-violet-6 to-crimson-6;
+  }
+
+}
+
 @font-face {
   font-family: 'Inter';
   font-weight: 100 900;
