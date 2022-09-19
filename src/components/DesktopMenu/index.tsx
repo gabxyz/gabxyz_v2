@@ -43,21 +43,21 @@ const DesktopMenu = () => {
     <div className="flex items-center justify-between">
       <header className="flex items-center gap-2">
         <div>
-          <h1 className="text-xl  font-semibold">Gabriel Rodrigues</h1>
-          <h2 className="ml-px text-base font-light text-mauve-11">
+          <h1 className="text-lg font-semibold">Gabriel Rodrigues</h1>
+          <h2 className="ml-px text-sm font-light text-mauve-11">
             Front-End Developer
           </h2>
         </div>
-        <span className="h-10">
+        <span className="h-8">
           <Separator orientation="vertical" />
         </span>
         <div className="flex gap-2">
-          <button className="flex h-10 w-10 items-center justify-center rounded-md bg-mauve-3 hover:bg-mauve-4">
+          <Button as="a" href="https://github.com/gabxyz" target="_blank">
             <GitHubLogoIcon />
-          </button>
-          <button className="flex h-10 w-10 items-center justify-center rounded-md bg-mauve-3 hover:bg-mauve-4">
+          </Button>
+          <Button as="a" href="https://linkedin.com/in/gabxyz" target="_blank">
             <LinkedInLogoIcon />
-          </button>
+          </Button>
         </div>
       </header>
       <div className="flex items-center justify-between gap-4">
