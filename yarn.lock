@@ -1294,6 +1294,15 @@ eslint-plugin-react@^7.29.4, eslint-plugin-react@^7.31.1:
     semver "^6.3.0"
     string.prototype.matchall "^4.0.7"
 
+eslint-plugin-tailwindcss@^3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-tailwindcss/-/eslint-plugin-tailwindcss-3.6.2.tgz#56ce5722b2972ed45cb4c0bc7062d37b0cfd4995"
+  integrity sha512-C9Ka3w6W9F5l/3ZDLnkdbqmeujc1vE+p5drjP1Z1UyxgoE1Nh4/f8oQ4XC45PrZsS0Nyv0YKXNH8/dn/FJZKsQ==
+  dependencies:
+    fast-glob "^3.2.5"
+    postcss "^8.4.4"
+    tailwindcss "^3.1.3"
+
 eslint-scope@^5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/eslint-scope/-/eslint-scope-5.1.1.tgz#e786e59a66cb92b3f6c1fb0d508aab174848f48c"
@@ -1439,6 +1448,17 @@ fast-glob@^3.2.11, fast-glob@^3.2.9:
   version "3.2.11"
   resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-3.2.11.tgz#a1172ad95ceb8a16e20caa5c5e56480e5129c1d9"
   integrity sha512-xrO3+1bxSo3ZVHAnqzyuewYT6aMFHRAd4Kcs92MAonjwQZLsK9d0SF1IyQ3k5PoirxTW0Oe/RqFgMQ6TcNE5Ew==
+  dependencies:
+    "@nodelib/fs.stat" "^2.0.2"
+    "@nodelib/fs.walk" "^1.2.3"
+    glob-parent "^5.1.2"
+    merge2 "^1.3.0"
+    micromatch "^4.0.4"
+
+fast-glob@^3.2.5:
+  version "3.2.12"
+  resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-3.2.12.tgz#7f39ec99c2e6ab030337142da9e0c18f37afae80"
+  integrity sha512-DVj4CQIYYow0BlaelwK1pHl5n5cRSJfM60UA0zK891sVInoPri2Ekj7+e1CT3/3qxXenpI+nBBmQAcJPJgaj4w==
   dependencies:
     "@nodelib/fs.stat" "^2.0.2"
     "@nodelib/fs.walk" "^1.2.3"
@@ -2370,7 +2390,7 @@ postcss@8.4.14:
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
 
-postcss@^8.4.14, postcss@^8.4.16:
+postcss@^8.4.14, postcss@^8.4.16, postcss@^8.4.4:
   version "8.4.16"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.16.tgz#33a1d675fac39941f5f445db0de4db2b6e01d43c"
   integrity sha512-ipHE1XBvKzm5xI7hiHCZJCSugxvsdq2mPnsq5+UF+VHCjiBvtDrlxJfMBToWaP9D5XlgNmcFGqoHmUn0EYEaRQ==
@@ -2758,7 +2778,7 @@ tailwindcss-radix@^2.5.0:
   resolved "https://registry.yarnpkg.com/tailwindcss-radix/-/tailwindcss-radix-2.5.0.tgz#d7cc67560361e4225a5fcee49ae76dc48c5b8f45"
   integrity sha512-vPIvolTmb0L6DlvIKBJRVGo+gB7ZU2jZbO8EpZw/5gBSTHx6PezRgQhR68kOuteh3F1q2PV3oBQgaIN4FxVmrw==
 
-tailwindcss@^3.1.8:
+tailwindcss@^3.1.3, tailwindcss@^3.1.8:
   version "3.1.8"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-3.1.8.tgz#4f8520550d67a835d32f2f4021580f9fddb7b741"
   integrity sha512-YSneUCZSFDYMwk+TGq8qYFdCA3yfBRdBlS7txSq0LUmzyeqRe3a8fBQzbz9M3WS/iFT4BNf/nmw9mEzrnSaC0g==
