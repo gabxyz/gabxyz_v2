@@ -4,7 +4,7 @@ import cn from 'classnames'
 interface ButtonProps<T extends React.ElementType> {
   as?: T
   size?: 'sm' | 'md' | 'lg'
-  variant?: 'default' | 'active' | 'social'
+  variant?: 'default' | 'default-active' | 'mobile' | 'mobile-active'
   children?: React.ReactNode
 }
 

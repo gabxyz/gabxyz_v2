@@ -4,44 +4,51 @@
 
 @layer base {
   html {
-    @apply max-h-screen overflow-hidden text-base antialiased;
+    @apply max-h-screen min-w-[320px] overflow-hidden text-base font-normal antialiased bg-mauve-1 text-mauve-12;
   }
 }
 
 @layer components {
   .btn {
-   @apply bg-mauve-3 flex items-center justify-center rounded-md cursor-pointer relative hover:shadow-button-hover focus:shadow-button-focus outline-none;
-  }
-  .sm {
-    @apply h-8 w-8 md:h-9 md:w-9;
+   @apply bg-mauve-3 inline-flex flex-none items-center justify-center rounded-md cursor-pointer relative hover:shadow-button-hover focus:shadow-button-focus outline-none;
   }
 
   .md {
-    @apply h-9 w-9 md:h-10 md:w-10;
+    @apply h-9 px-3 md:h-11 md:px-4;
   }
 
   .lg {
-    @apply h-10 w-10 md:h-11 md:w-11;
+    @apply h-10 px-4 md:h-12 md:px-5;
   }
 
   .default {
     @apply bg-gradient-to-b hover:from-violet-4 hover:to-crimson-4;
   }
 
-  .active {
+  .default-active {
     @apply bg-gradient-to-b from-violet-6 to-crimson-6;
   }
+
+  .mobile {
+    @apply w-full justify-start gap-2 text-sm bg-transparent;
+  }
+
+  .mobile-active {
+    @apply w-full justify-start gap-2 text-sm font-semibold bg-gradient-to-r from-violet-6 to-crimson-6;
+  }
+
 
 }
 
 @font-face {
-  font-family: 'Inter';
+  font-family: 'Manrope';
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
   font-variation-ligatures: normal;
-  src: url('/fonts/Inter.var.woff2') format('woff2');
+  src: url('/fonts/Manrope.var.woff2') format('woff2');
 }
+
 @font-face {
   font-family: 'JetBrainsMono';
   font-weight: 100 900;
