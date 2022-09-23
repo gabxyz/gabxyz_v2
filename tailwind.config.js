@@ -67,7 +67,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        sans: ['Manrope', ...defaultTheme.fontFamily.sans],
         mono: ['JetBrainsMono', ...defaultTheme.fontFamily.mono]
       },
       boxShadow: {
@@ -98,6 +98,7 @@ module.exports = {
   },
   plugins: [
     require('tailwindcss-radix')({ variantPrefix: 'rdx' }),
-    require('windy-radix-palette')
+    require('windy-radix-palette'),
+    require('@tailwindcss/line-clamp')
   ]
 }
