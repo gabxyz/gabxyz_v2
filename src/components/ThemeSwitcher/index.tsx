@@ -18,9 +18,14 @@ const ThemeSwitcher = () => {
     <Button
       onPressedChange={() => setTheme(isDark ? 'light' : 'dark')}
       as={Toggle.Root}
-      size="lg"
     >
-      {mounted && (isDark ? <SunIcon /> : <MoonIcon />)}
+      {!mounted ? (
+        <span className="h-[15px] w-[15px]"></span>
+      ) : isDark ? (
+        <SunIcon />
+      ) : (
+        <MoonIcon />
+      )}
     </Button>
   )
 }
