@@ -1,4 +1,4 @@
-import Layout from 'layouts/Layout'
+import Base from 'layouts/Base'
 import { ThemeProvider } from 'next-themes'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
@@ -11,9 +11,9 @@ function App({ Component, pageProps }: AppProps) {
         <title>Gabxyz</title>
         <meta name="description" content="Personal portfolio project" />
       </Head>
-      <Layout>
+      <Base>
         <Component {...pageProps} />
-      </Layout>
+      </Base>
     </ThemeProvider>
   )
 }
