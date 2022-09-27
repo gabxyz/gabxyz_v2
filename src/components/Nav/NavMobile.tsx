@@ -70,7 +70,7 @@ const NavMobile = () => {
             <HamburgerMenuIcon />
           </Button>
           <DialogMenu.Overlay className="fixed inset-0 z-20 bg-blackA-9" />
-          <DialogMenu.Content className="fixed inset-0 z-30 w-4/5 border-r border-mauve-6 bg-mauve-1 px-2.5 rdx-state-closed:animate-close-menu rdx-state-open:animate-open-menu">
+          <DialogMenu.Content className="fixed inset-0 z-30 w-4/5 border-r border-mauve-6 bg-mauve-1 bg-light-texture px-2.5 rdx-state-closed:animate-close-menu rdx-state-open:animate-open-menu dark:bg-dark-texture">
             <motion.div
               variants={container}
               initial="hidden"

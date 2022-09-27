@@ -70,6 +70,10 @@ module.exports = {
         sans: ['Manrope', ...defaultTheme.fontFamily.sans],
         mono: ['JetBrainsMono', ...defaultTheme.fontFamily.mono]
       },
+      backgroundImage: {
+        'dark-texture': "url('/img/dark-nnnoise.svg')",
+        'light-texture': "url('/img/light-nnnoise.svg')"
+      },
       boxShadow: {
         'button-hover':
           '0px 0px 4px 0px var(--violet7), 0px 0px 4px 0px var(--crimson7)',

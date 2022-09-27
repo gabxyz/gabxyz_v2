@@ -4,7 +4,11 @@
 
 @layer base {
   html {
-    @apply max-h-screen min-w-[320px] overflow-hidden text-base font-normal antialiased bg-mauve-1 text-mauve-12;
+    @apply max-h-screen min-w-[320px] overflow-hidden antialiased scroll-smooth;
+  }
+
+  body {
+     @apply bg-mauve-1 text-mauve-12 bg-light-texture dark:bg-dark-texture text-base;
   }
 }
 
