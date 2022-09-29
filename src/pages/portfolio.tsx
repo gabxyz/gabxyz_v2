@@ -1,7 +1,9 @@
+import Card from 'components/Card'
+
 export default function Porfolio() {
   return (
     <>
-      <h2>hehe</h2>
+      <Card />
     </>
   )
 }
