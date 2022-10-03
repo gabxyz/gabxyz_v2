@@ -19,6 +19,9 @@ module.exports = {
     './src/layouts/**/*.tsx'
   ],
   darkMode: 'class',
+  corePlugins: {
+    aspectRatio: false
+  },
   theme: {
     fontSize: {
       xs: [
@@ -67,7 +70,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ['Manrope', ...defaultTheme.fontFamily.sans],
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
         mono: ['JetBrainsMono', ...defaultTheme.fontFamily.mono]
       },
       backgroundImage: {
@@ -75,9 +78,6 @@ module.exports = {
         'light-texture': "url('/img/light-nnnoise.svg')"
       },
       boxShadow: {
-        default: '0px 0px 1px 1px var(--mauve5)',
-        'card-focus': '0px 0px 1px 1px var(--mauve6)',
-        'card-hover': '0px 0px 1px 1px var(--mauve7)',
         'button-focus':
           '0px 0px 4px 0px var(--violet7), 0px 0px 4px 0px var(--crimson7)',
         'button-hover':
@@ -107,6 +107,7 @@ module.exports = {
   plugins: [
     require('tailwindcss-radix')({ variantPrefix: 'rdx' }),
     require('windy-radix-palette'),
-    require('@tailwindcss/line-clamp')
+    require('@tailwindcss/line-clamp'),
+    require('@tailwindcss/aspect-ratio')
   ]
 }
