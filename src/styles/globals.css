@@ -45,12 +45,12 @@
 }
 
 @font-face {
-  font-family: 'Manrope';
+  font-family: 'Inter';
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
   font-variation-ligatures: normal;
-  src: url('/fonts/Manrope.var.woff2') format('woff2');
+  src: url('/fonts/Inter.var.woff2') format('woff2');
 }
 
 @font-face {
