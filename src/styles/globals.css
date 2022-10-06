@@ -8,49 +8,49 @@
   }
 
   body {
-     @apply bg-mauve-1 text-mauve-12 bg-light-texture dark:bg-dark-texture text-base;
+     @apply bg-white bg-light-texture text-mauve-12 dark:bg-mauve-1 dark:bg-dark-texture;
   }
 }
 
 @layer components {
   .btn {
-   @apply bg-mauve-3 inline-flex flex-none items-center justify-center rounded-md cursor-pointer relative hover:shadow-button-hover focus:shadow-button-focus outline-none;
+   @apply bg-mauve-3 inline-flex flex-none items-center justify-center relative rounded-lg cursor-pointer outline-none hover:shadow-button-hover focus:shadow-button-focus;
   }
 
   .md {
-    @apply h-9 px-3 md:h-11 md:px-4;
+    @apply h-10 px-3.5 md:h-11 md:px-4;
   }
 
   .lg {
-    @apply h-10 px-4 md:h-12 md:px-5;
+    @apply h-11 px-4 md:h-12 md:px-5;
   }
 
   .default {
     @apply bg-gradient-to-b hover:from-violet-4 hover:to-crimson-4;
   }
 
-  .default-active {
+  .active {
     @apply bg-gradient-to-b from-violet-6 to-crimson-6;
   }
 
   .mobile {
-    @apply w-full justify-start gap-2 text-sm bg-transparent;
+    @apply w-full justify-start gap-2.5 text-sm font-medium bg-transparent;
   }
 
   .mobile-active {
-    @apply w-full justify-start gap-2 text-sm font-semibold bg-gradient-to-r from-violet-6 to-crimson-6;
+    @apply w-full justify-start gap-2.5 text-sm font-semibold bg-gradient-to-r from-violet-5 to-crimson-5;
   }
 
 
 }
 
 @font-face {
-  font-family: 'Inter';
+  font-family: 'Manrope';
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
   font-variation-ligatures: normal;
-  src: url('/fonts/Inter.var.woff2') format('woff2');
+  src: url('/fonts/Manrope.var.woff2') format('woff2');
 }
 
 @font-face {

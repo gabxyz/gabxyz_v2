@@ -70,7 +70,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        sans: ['Manrope', ...defaultTheme.fontFamily.sans],
         mono: ['JetBrainsMono', ...defaultTheme.fontFamily.mono]
       },
       backgroundImage: {
@@ -108,6 +108,8 @@ module.exports = {
     require('tailwindcss-radix')({ variantPrefix: 'rdx' }),
     require('windy-radix-palette'),
     require('@tailwindcss/line-clamp'),
-    require('@tailwindcss/aspect-ratio')
+    require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/typography'),
+    require('windy-radix-typography')
   ]
 }
