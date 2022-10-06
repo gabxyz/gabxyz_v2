@@ -1,16 +1,11 @@
-import React from 'react'
-import cn from 'classnames'
-
 interface ButtonProps<T extends React.ElementType> {
   as?: T
-  size?: 'sm' | 'md' | 'lg'
-  variant?: 'default' | 'default-active' | 'mobile' | 'mobile-active'
+  size?: 'md' | 'lg'
   children?: React.ReactNode
 }
 
 const Button = <T extends React.ElementType = 'button'>({
   size = 'md',
-  variant = 'default',
   as,
   children,
   ...rest
@@ -18,7 +13,7 @@ const Button = <T extends React.ElementType = 'button'>({
   Omit<React.ComponentPropsWithoutRef<T>, keyof ButtonProps<T>>) => {
   const Wrapper = as || 'button'
   return (
-    <Wrapper {...rest} className={cn(`btn ${size} ${variant}`)}>
+    <Wrapper {...rest} className={`btn default ${size}`}>
       {children}
     </Wrapper>
   )
