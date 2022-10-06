@@ -1,25 +1,27 @@
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import type { ReactElement } from 'react'
 
 import * as NavMenu from '@radix-ui/react-navigation-menu'
 import {
-  CodeIcon,
+  BackpackIcon,
   GitHubLogoIcon,
   HomeIcon,
   InfoCircledIcon,
   LinkedInLogoIcon
 } from '@radix-ui/react-icons'
+import { motion } from 'framer-motion'
 
 import Separator from 'components/Separator'
 import ThemeSwitcher from 'components/ThemeSwitcher'
-
-import { motion } from 'framer-motion'
 import Button from 'components/Button'
+
+import NavLink from './NavLink'
 
 const NavDesktop = () => {
   const router = useRouter()
-  const currentPath = router.asPath
+  const currentPath = router.query.slug
+    ? router.asPath.replace(`/${router.query.slug.toString()}`, '')
+    : router.asPath
 
   const header = {
     hidden: { opacity: 0, x: -80 },
@@ -32,9 +34,10 @@ const NavDesktop = () => {
   }
 
   const container = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 0, y: -60 },
     show: {
       opacity: 1,
+      y: 0,
       transition: {
         delayChildren: 0.2,
         staggerChildren: 0.1
@@ -49,9 +52,9 @@ const NavDesktop = () => {
       icon: <HomeIcon />
     },
     {
-      title: 'Portfolio',
-      path: '/portfolio',
-      icon: <CodeIcon />
+      title: 'Projects',
+      path: '/projects',
+      icon: <BackpackIcon />
     },
     {
       title: 'About',
@@ -66,9 +69,9 @@ const NavDesktop = () => {
         variants={container}
         initial="hidden"
         animate="show"
-        className="flex items-center justify-between"
+        className="flex items-center justify-between rounded-xl bg-mauve-2 p-6 shadow-md"
       >
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2.5">
           <div className="leading-none">
             <motion.h1 variants={header} className="text-xl font-semibold">
               Gabriel Rodrigues
@@ -101,27 +104,23 @@ const NavDesktop = () => {
             <NavMenu.List className="flex list-none gap-4">
               {pages.map(({ path, icon }) => (
                 <NavMenu.Item key={path}>
-                  <Link href={path} passHref>
-                    <Button
-                      variant={
-                        path === currentPath ? 'default-active' : 'default'
-                      }
-                      as={NavMenu.Link}
-                    >
-                      {icon}
-                      {path === currentPath && (
-                        <motion.span
-                          className="absolute inset-x-0 -top-2 h-px rounded-full bg-gradient-to-r from-violet-9 to-crimson-9"
-                          layoutId="topline"
-                          transition={{
-                            type: 'spring',
-                            duration: 0.8,
-                            stiffness: 80
-                          }}
-                        />
-                      )}
-                    </Button>
-                  </Link>
+                  <NavLink
+                    href={path}
+                    variant={path === currentPath ? 'active' : 'default'}
+                  >
+                    {icon}
+                    {path === currentPath && (
+                      <motion.span
+                        className="absolute inset-x-0 -top-2 h-px rounded-full bg-gradient-to-r from-violet-9 to-crimson-9"
+                        layoutId="topline"
+                        transition={{
+                          type: 'spring',
+                          duration: 0.8,
+                          stiffness: 80
+                        }}
+                      />
+                    )}
+                  </NavLink>
                 </NavMenu.Item>
               ))}
             </NavMenu.List>

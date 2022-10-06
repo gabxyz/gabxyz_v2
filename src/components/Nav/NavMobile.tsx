@@ -1,10 +1,10 @@
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { ReactElement, useState } from 'react'
 
 import * as DialogMenu from '@radix-ui/react-dialog'
 import {
-  CodeIcon,
+  ArrowTopRightIcon,
+  BackpackIcon,
   Cross1Icon,
   GitHubLogoIcon,
   HamburgerMenuIcon,
@@ -12,20 +12,35 @@ import {
   InfoCircledIcon,
   LinkedInLogoIcon
 } from '@radix-ui/react-icons'
+import { motion } from 'framer-motion'
 
 import Separator from 'components/Separator'
-import { motion } from 'framer-motion'
 import ThemeSwitcher from 'components/ThemeSwitcher'
 import Button from 'components/Button'
+
+import NavLink from './NavLink'
 
 const NavMobile = () => {
   const [open, setOpen] = useState(false)
   const router = useRouter()
-  const currentPath = router.asPath
+  const currentPath = router.query.slug
+    ? router.asPath.replace(`/${router.query.slug.toString()}`, '')
+    : router.asPath
 
   const header = {
-    hidden: { opacity: 0, y: -20 },
+    hidden: { opacity: 0, y: -60 },
     show: { opacity: 1, y: 0 }
+  }
+  const containerNav = {
+    hidden: { opacity: 0, y: -60 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delayChildren: 0.2,
+        staggerChildren: 0.1
+      }
+    }
   }
 
   const container = {
@@ -40,7 +55,7 @@ const NavMobile = () => {
   }
 
   const item = {
-    hidden: { opacity: 0, x: -50 },
+    hidden: { opacity: 0, x: -80 },
     show: { opacity: 1, x: 0 }
   }
 
@@ -51,9 +66,9 @@ const NavMobile = () => {
       icon: <HomeIcon />
     },
     {
-      title: 'Portfolio',
-      path: '/portfolio',
-      icon: <CodeIcon />
+      title: 'Projects',
+      path: '/projects',
+      icon: <BackpackIcon />
     },
     {
       title: 'About',
@@ -62,25 +77,41 @@ const NavMobile = () => {
     }
   ]
 
+  const social: { title: string; path: string; icon: ReactElement }[] = [
+    {
+      title: 'Github',
+      path: 'https://github.com/gabxyz',
+      icon: <GitHubLogoIcon />
+    },
+    {
+      title: 'LinkedIn',
+      path: 'https://linkedin.com/in/gabxyz',
+      icon: <LinkedInLogoIcon />
+    }
+  ]
+
   return (
     <>
-      <div className="flex justify-between">
+      <motion.div
+        variants={containerNav}
+        initial="hidden"
+        animate="show"
+        className="flex justify-between rounded-xl bg-mauve-2 p-2.5 shadow-md"
+      >
         <DialogMenu.Root open={open} onOpenChange={() => setOpen(!open)}>
           <Button as={DialogMenu.Trigger}>
             <HamburgerMenuIcon />
           </Button>
-          <DialogMenu.Overlay className="fixed inset-0 z-20 bg-blackA-9" />
-          <DialogMenu.Content className="fixed inset-0 z-30 w-4/5 border-r border-mauve-6 bg-mauve-1 bg-light-texture px-2.5 rdx-state-closed:animate-close-menu rdx-state-open:animate-open-menu dark:bg-dark-texture">
+          <DialogMenu.Overlay className="fixed inset-0 z-20 bg-blackA-9 backdrop-blur-[1px]" />
+          <DialogMenu.Content className="fixed inset-0 z-30 w-4/5  border-r border-mauve-6 bg-mauve-2 p-4 rdx-state-closed:animate-close-menu rdx-state-open:animate-open-menu">
             <motion.div
               variants={container}
-              initial="hidden"
-              animate="show"
-              className="flex flex-wrap items-center justify-between gap-1.5 py-4"
+              className="flex justify-between gap-1.5"
             >
               <Button as={DialogMenu.Close}>
                 <Cross1Icon />
               </Button>
-              <div className="flex items-center justify-end space-x-1.5">
+              <div className="flex flex-col items-end gap-2">
                 <div className="whitespace-nowrap leading-tight">
                   <motion.h1 variants={header} className="font-semibold">
                     Gabriel Rodrigues
@@ -92,59 +123,50 @@ const NavMobile = () => {
                     Front-end Developer
                   </motion.h2>
                 </div>
-                <motion.span variants={header} className="h-8">
-                  <Separator orientation="vertical" />
-                </motion.span>
-                <motion.div
-                  variants={header}
-                  className="flex items-center gap-1.5"
-                >
-                  <Button
-                    as="a"
-                    href="https://github.com/gabxyz"
-                    target="_blank"
-                  >
-                    <GitHubLogoIcon />
-                  </Button>
-                  <Button
-                    as="a"
-                    href="https://linkedin.com/in/gabxyz"
-                    target="_blank"
-                  >
-                    <LinkedInLogoIcon />
-                  </Button>
-                </motion.div>
               </div>
             </motion.div>
-            <nav aria-label="Pages Navigation">
+            <nav aria-label="Main Navigation">
               <motion.ul
                 variants={container}
-                initial="hidden"
-                animate="show"
-                className="my-4 flex flex-col gap-2"
+                className="my-12 flex flex-col gap-2"
               >
                 {pages.map(({ title, path, icon }) => (
                   <motion.li variants={item} key={title}>
-                    <Link href={path} passHref key={title}>
-                      <Button
-                        as="a"
-                        variant={
-                          path === currentPath ? 'mobile-active' : 'mobile'
-                        }
-                        onClick={() => setOpen(false)}
-                      >
-                        {icon}
-                        {title}
-                      </Button>
-                    </Link>
+                    <NavLink
+                      href={path}
+                      variant={
+                        path === currentPath ? 'mobile-active' : 'mobile'
+                      }
+                      onClick={() => setOpen(false)}
+                    >
+                      {icon}
+                      {title}
+                    </NavLink>
                   </motion.li>
                 ))}
+                <motion.span variants={item} className="m-2 w-full self-center">
+                  <Separator />
+                </motion.span>
+                <motion.div
+                  variants={item}
+                  className="flex flex-col gap-2 text-sm font-semibold"
+                >
+                  {social.map(({ title, path, icon }) => (
+                    <Button as="a" href={path} key={path} target="_blank">
+                      <span className="flex h-full w-full items-center gap-2.5">
+                        {icon}
+                        {title}
+                      </span>
+                      <ArrowTopRightIcon className="text-mauve-11" />
+                    </Button>
+                  ))}
+                </motion.div>
               </motion.ul>
             </nav>
           </DialogMenu.Content>
         </DialogMenu.Root>
         <ThemeSwitcher />
-      </div>
+      </motion.div>
     </>
   )
 }
