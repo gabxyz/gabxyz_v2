@@ -37,7 +37,7 @@ const Base = ({ children }: BaseProps) => {
             damping: 25,
             stiffness: 250
           }}
-          className="my-14 indent-px"
+          className="my-12 mx-6"
         >
           {children}
         </motion.main>
