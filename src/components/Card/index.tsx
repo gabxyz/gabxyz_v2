@@ -50,7 +50,7 @@ const Card = ({ slug, title, description, bannerUrl, stack }: CardProps) => {
           <div className="flex w-full items-center justify-between">
             <p className="font-mono text-sm font-bold">{stack.join(' :: ')}</p>
             <NavLink href={`projects/${slug}`}>
-              <span className="font-mono text-sm">Learn more</span>
+              <span>Learn more</span>
               <ArrowRightIcon />
             </NavLink>
           </div>

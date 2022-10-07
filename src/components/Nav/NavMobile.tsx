@@ -99,7 +99,7 @@ const NavMobile = () => {
         className="flex justify-between rounded-xl bg-mauve-2 p-2 shadow-md"
       >
         <DialogMenu.Root open={open} onOpenChange={() => setOpen(!open)}>
-          <Button as={DialogMenu.Trigger} iconOnly>
+          <Button as={DialogMenu.Trigger}>
             <HamburgerMenuIcon />
           </Button>
           <DialogMenu.Overlay className="fixed inset-0 z-20 bg-blackA-9 backdrop-blur-[1px]" />
@@ -108,7 +108,7 @@ const NavMobile = () => {
               variants={container}
               className="flex justify-between gap-2"
             >
-              <Button as={DialogMenu.Close} iconOnly>
+              <Button as={DialogMenu.Close}>
                 <Cross1Icon />
               </Button>
               <div className="flex flex-col items-end gap-2">
@@ -153,7 +153,7 @@ const NavMobile = () => {
                 >
                   {social.map(({ title, path, icon }) => (
                     <Button as="a" href={path} key={path} target="_blank">
-                      <span className="flex h-full w-full items-center gap-2">
+                      <span className="flex h-full w-full items-center gap-2 font-sans">
                         {icon}
                         {title}
                       </span>
