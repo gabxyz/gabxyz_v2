@@ -84,11 +84,17 @@ const NavDesktop = () => {
             <Separator orientation="vertical" />
           </motion.span>
           <motion.div variants={header} className="flex gap-2">
-            <Button as="a" href="https://github.com/gabxyz" target="_blank">
+            <Button
+              as="a"
+              iconOnly
+              href="https://github.com/gabxyz"
+              target="_blank"
+            >
               <GitHubLogoIcon />
             </Button>
             <Button
               as="a"
+              iconOnly
               href="https://linkedin.com/in/gabxyz"
               target="_blank"
             >
@@ -107,6 +113,7 @@ const NavDesktop = () => {
                   <NavLink
                     href={path}
                     variant={path === currentPath ? 'active' : 'default'}
+                    iconOnly
                   >
                     {icon}
                     {path === currentPath && (

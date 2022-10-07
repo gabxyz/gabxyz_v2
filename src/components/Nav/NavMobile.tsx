@@ -96,19 +96,19 @@ const NavMobile = () => {
         variants={containerNav}
         initial="hidden"
         animate="show"
-        className="flex justify-between rounded-xl bg-mauve-2 p-2.5 shadow-md"
+        className="flex justify-between rounded-xl bg-mauve-2 p-2 shadow-md"
       >
         <DialogMenu.Root open={open} onOpenChange={() => setOpen(!open)}>
-          <Button as={DialogMenu.Trigger}>
+          <Button as={DialogMenu.Trigger} iconOnly>
             <HamburgerMenuIcon />
           </Button>
           <DialogMenu.Overlay className="fixed inset-0 z-20 bg-blackA-9 backdrop-blur-[1px]" />
           <DialogMenu.Content className="fixed inset-0 z-30 w-4/5  border-r border-mauve-6 bg-mauve-2 p-4 rdx-state-closed:animate-close-menu rdx-state-open:animate-open-menu">
             <motion.div
               variants={container}
-              className="flex justify-between gap-1.5"
+              className="flex justify-between gap-2"
             >
-              <Button as={DialogMenu.Close}>
+              <Button as={DialogMenu.Close} iconOnly>
                 <Cross1Icon />
               </Button>
               <div className="flex flex-col items-end gap-2">
@@ -140,7 +140,7 @@ const NavMobile = () => {
                       onClick={() => setOpen(false)}
                     >
                       {icon}
-                      {title}
+                      <span>{title}</span>
                     </NavLink>
                   </motion.li>
                 ))}
@@ -153,7 +153,7 @@ const NavMobile = () => {
                 >
                   {social.map(({ title, path, icon }) => (
                     <Button as="a" href={path} key={path} target="_blank">
-                      <span className="flex h-full w-full items-center gap-2.5">
+                      <span className="flex h-full w-full items-center gap-2">
                         {icon}
                         {title}
                       </span>

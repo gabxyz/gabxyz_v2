@@ -21,7 +21,7 @@ const Card = ({ slug, title, description, bannerUrl, stack }: CardProps) => {
 
   return (
     <>
-      <div className="w-full max-w-full rounded-lg bg-mauve-2 shadow-lg md:max-w-md">
+      <div className="w-full max-w-sm overflow-hidden rounded-lg bg-mauve-2 shadow-lg">
         <Link href={`projects/${slug}`}>
           <a className="group cursor-pointer">
             <Image
@@ -31,7 +31,7 @@ const Card = ({ slug, title, description, bannerUrl, stack }: CardProps) => {
               objectFit="cover"
               objectPosition="center"
               className={cn(
-                'overflow-hidden rounded-t-lg duration-500 ease-in-out group-hover:opacity-75',
+                'rounded-t-lg duration-500 ease-in-out group-hover:opacity-75',
                 isLoading ? 'grayscale blur-md' : 'grayscale-0 blur-0'
               )}
               onLoadingComplete={() => setLoading(false)}
@@ -50,9 +50,7 @@ const Card = ({ slug, title, description, bannerUrl, stack }: CardProps) => {
           <div className="flex w-full items-center justify-between">
             <p className="font-mono text-sm font-bold">{stack.join(' :: ')}</p>
             <NavLink href={`projects/${slug}`}>
-              <span className="mr-2 font-mono text-sm font-bold">
-                Learn more
-              </span>
+              <span className="font-mono text-sm">Learn more</span>
               <ArrowRightIcon />
             </NavLink>
           </div>
