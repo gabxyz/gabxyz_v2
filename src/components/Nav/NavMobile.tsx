@@ -1,6 +1,7 @@
-import { useRouter } from 'next/router'
 import { ReactElement, useState } from 'react'
+import { useRouter } from 'next/router'
 
+import { motion } from 'framer-motion'
 import * as DialogMenu from '@radix-ui/react-dialog'
 import {
   ArrowTopRightIcon,
@@ -12,20 +13,16 @@ import {
   InfoCircledIcon,
   LinkedInLogoIcon
 } from '@radix-ui/react-icons'
-import { motion } from 'framer-motion'
 
+import NavLink from './NavLink'
 import Separator from 'components/Separator'
 import ThemeSwitcher from 'components/ThemeSwitcher'
 import Button from 'components/Button'
 
-import NavLink from './NavLink'
-
 const NavMobile = () => {
   const [open, setOpen] = useState(false)
   const router = useRouter()
-  const currentPath = router.query.slug
-    ? router.asPath.replace(`/${router.query.slug.toString()}`, '')
-    : router.asPath
+  const currentPath = router.asPath
 
   const header = {
     hidden: { opacity: 0, y: -60 },

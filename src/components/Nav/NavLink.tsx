@@ -1,14 +1,12 @@
 import Link, { LinkProps } from 'next/link'
 
 type NavLinkProps = {
-  size?: 'md' | 'lg'
   variant?: 'default' | 'active' | 'mobile' | 'mobile-active'
   children: React.ReactNode
 } & LinkProps &
   React.HTMLProps<HTMLAnchorElement>
 
 const NavLink: React.FC<NavLinkProps> = ({
-  size = 'md',
   variant = 'default',
   as,
   children,
@@ -19,7 +17,7 @@ const NavLink: React.FC<NavLinkProps> = ({
   passHref,
   ...rest
 }) => {
-  const customClasses = `btn ${size} ${variant}`
+  const customClasses = `btn ${variant}`
 
   return (
     <Link

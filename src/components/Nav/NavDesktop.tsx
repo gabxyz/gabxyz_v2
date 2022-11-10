@@ -1,5 +1,5 @@
-import { useRouter } from 'next/router'
 import type { ReactElement } from 'react'
+import { useRouter } from 'next/router'
 
 import * as NavMenu from '@radix-ui/react-navigation-menu'
 import {
@@ -11,17 +11,14 @@ import {
 } from '@radix-ui/react-icons'
 import { motion } from 'framer-motion'
 
+import NavLink from './NavLink'
 import Separator from 'components/Separator'
 import ThemeSwitcher from 'components/ThemeSwitcher'
 import Button from 'components/Button'
 
-import NavLink from './NavLink'
-
 const NavDesktop = () => {
   const router = useRouter()
-  const currentPath = router.query.slug
-    ? router.asPath.replace(`/${router.query.slug.toString()}`, '')
-    : router.asPath
+  const currentPath = router.asPath
 
   const header = {
     hidden: { opacity: 0, x: -80 },
@@ -69,7 +66,7 @@ const NavDesktop = () => {
         variants={container}
         initial="hidden"
         animate="show"
-        className="flex items-center justify-between rounded-xl bg-mauve-2 p-6 shadow-md"
+        className="flex items-center justify-between rounded-xl bg-mauve-2 p-6 shadow-lg"
       >
         <div className="flex items-center gap-2.5">
           <div className="leading-none">
@@ -111,7 +108,7 @@ const NavDesktop = () => {
                     {icon}
                     {path === currentPath && (
                       <motion.span
-                        className="absolute -inset-x-2 -top-2 h-px w-full rounded-full bg-gradient-to-r from-violet-9 to-crimson-9"
+                        className="absolute -inset-x-1.5 -top-2 h-px w-full rounded-full bg-gradient-to-r from-violet-9 to-crimson-9"
                         layoutId="topline"
                         transition={{
                           type: 'spring',
