@@ -2,27 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  html {
-    @apply max-h-screen min-w-[320px] overflow-hidden antialiased scroll-smooth;
-  }
+html {
+  min-width: 360px;
+  scroll-behavior: smooth;
+}
 
+
+@layer base {
   body {
-     @apply bg-white bg-light-texture text-mauve-12 dark:bg-mauve-1 dark:bg-dark-texture;
+    @apply bg-white bg-light-texture text-mauve-12 dark:bg-mauve-1 dark:bg-dark-texture;
   }
 }
 
 @layer components {
+  .embla {
+    @apply mx-auto relative space-y-4 transition-opacity duration-500;
+  }
+
+  .embla__viewport {
+    @apply overflow-hidden;
+  }
+
+  .embla__container {
+    @apply flex mt-5;
+  }
+
+  .embla__slide {
+    @apply flex-[0_0_auto] max-w-full p-2.5;
+  }
+
   .btn {
-   @apply bg-mauve-3 inline-flex flex-none items-center justify-center relative rounded-lg cursor-pointer outline-none hover:shadow-button-hover focus:shadow-button-focus;
+   @apply shadow flex items-center justify-center space-x-1.5 relative bg-mauve-3 font-semibold text-sm font-mono rounded-lg cursor-pointer leading-none outline-none h-10 px-3.5 md:h-11 md:px-4 hover:shadow-button-hover focus:shadow-button-focus;
   }
 
-  .md {
-    @apply h-10 px-3.5 md:h-11 md:px-4;
+  .embla-arrow {
+    @apply h-6 px-4 rounded-xl hover:text-mauve-12
   }
 
-  .lg {
-    @apply h-11 px-4 md:h-12 md:px-5;
+  .embla-dot {
+    @apply h-2 px-2 md:px-3 transition-all duration-500 ease-in-out;
+  }
+
+  .embla-dot-active {
+    @apply h-2 px-4 md:px-6 bg-gradient-to-l from-violet-5 to-crimson-5 transition-all duration-500 delay-200 ease-in-out;
   }
 
   .default {
@@ -30,15 +52,15 @@
   }
 
   .active {
-    @apply bg-gradient-to-b from-violet-6 to-crimson-6;
+    @apply bg-gradient-to-b from-violet-5 to-crimson-5;
   }
 
   .mobile {
-    @apply w-full justify-start gap-2.5 text-sm font-medium bg-transparent;
+    @apply w-full justify-start font-sans bg-transparent shadow-none;
   }
 
   .mobile-active {
-    @apply w-full justify-start gap-2.5 text-sm font-semibold bg-gradient-to-r from-violet-5 to-crimson-5;
+    @apply w-full justify-start font-sans font-bold bg-gradient-to-r from-violet-5 to-crimson-5 shadow-md;
   }
 
 
