@@ -1,6 +1,8 @@
-import Card from 'components/Card'
-import { allProjects, type Project } from 'contentlayer/generated'
 import type { GetStaticProps, InferGetStaticPropsType } from 'next'
+import { allProjects, type Project } from 'contentlayer/generated'
+
+import Card from 'components/Card'
+import Carousel from 'components/Carousel'
 
 export const getStaticProps: GetStaticProps<{
   projects: Project[]
@@ -13,11 +15,13 @@ const AllProjectsPage = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <h1 className="mb-8 text-xl font-semibold">Projects</h1>
+      <h1 className="mb-8 indent-2 text-xl font-semibold">Projects</h1>
 
-      {projects.map((project) => (
-        <Card key={project.slug} {...project} />
-      ))}
+      <Carousel>
+        {projects.map((project, index) => (
+          <Card key={project.slug} index={index} {...project} />
+        ))}
+      </Carousel>
     </>
   )
 }
