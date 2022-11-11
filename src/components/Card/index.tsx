@@ -1,14 +1,17 @@
+import { useContext, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
 
 import cn from 'classnames'
-import { ArrowRightIcon } from '@radix-ui/react-icons'
+import { motion } from 'framer-motion'
+import { ChevronRightIcon } from '@radix-ui/react-icons'
 
 import NavLink from 'components/Nav/NavLink'
 import Separator from 'components/Separator'
+import { CarouselContext } from 'components/Carousel'
 
 interface CardProps {
+  index: number
   slug: string
   title: string
   description: string
@@ -16,12 +19,45 @@ interface CardProps {
   stack: string[]
 }
 
-const Card = ({ slug, title, description, bannerUrl, stack }: CardProps) => {
+const Card = ({
+  index,
+  slug,
+  title,
+  description,
+  bannerUrl,
+  stack
+}: CardProps) => {
   const [isLoading, setLoading] = useState(true)
+  const { selectedIndex } = useContext(CarouselContext)
+  const isActive = selectedIndex === index
+
+  const cardVariants = {
+    inactive: {
+      opacity: 0.6,
+      y: 0,
+      filter: 'blur(1px)'
+    },
+    active: {
+      opacity: 1,
+      y: -20,
+      filter: 'blur(0px)'
+    }
+  }
 
   return (
     <>
-      <div className="w-full max-w-sm overflow-hidden rounded-lg bg-mauve-2 shadow-lg">
+      <motion.div
+        variants={cardVariants}
+        animate={isActive ? 'active' : 'inactive'}
+        transition={{
+          type: 'spring',
+          damping: 15,
+          stiffness: 250,
+          duration: 0.5,
+          delay: 0.2
+        }}
+        className="w-full max-w-lg overflow-hidden rounded-lg bg-mauve-2 shadow-md"
+      >
         <Link href={`projects/${slug}`}>
           <a className="group cursor-pointer">
             <Image
@@ -31,7 +67,7 @@ const Card = ({ slug, title, description, bannerUrl, stack }: CardProps) => {
               objectFit="cover"
               objectPosition="center"
               className={cn(
-                'rounded-t-lg duration-500 ease-in-out group-hover:opacity-75',
+                'rounded-t-lg duration-500 ease-in-out group-hover:opacity-90',
                 isLoading ? 'grayscale blur-md' : 'grayscale-0 blur-0'
               )}
               onLoadingComplete={() => setLoading(false)}
@@ -51,11 +87,11 @@ const Card = ({ slug, title, description, bannerUrl, stack }: CardProps) => {
             <p className="font-mono text-sm font-bold">{stack.join(' :: ')}</p>
             <NavLink href={`projects/${slug}`}>
               <span>Learn more</span>
-              <ArrowRightIcon />
+              <ChevronRightIcon />
             </NavLink>
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   )
 }
