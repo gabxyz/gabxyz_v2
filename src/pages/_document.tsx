@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html>
       <Head />
-      <body className="mx-auto max-w-4xl p-1.5 md:py-10">
+      <body className="mx-auto min-h-screen max-w-4xl antialiased">
         <Main />
         <NextScript />
       </body>

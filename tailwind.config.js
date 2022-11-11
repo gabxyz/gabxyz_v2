@@ -79,10 +79,9 @@ module.exports = {
       },
       boxShadow: {
         'button-focus':
-          '0px 0px 4px 0px var(--violet7), 0px 0px 4px 0px var(--crimson7)',
+          '0px 0px 2px 0px var(--violet7), 0px 0px 2px 0px var(--crimson7)',
         'button-hover':
-          '0px 0px 4px 0px var(--violet8), 0px 0px 4px 0px var(--crimson8)',
-        image: '0 2px 10px var(--blackA8)'
+          '0px 0px 2px 0px var(--violet8), 0px 0px 2px 0px var(--crimson8)'
       },
       keyframes: {
         in: {
