@@ -1,18 +1,23 @@
 interface ButtonProps<T extends React.ElementType> {
   as?: T
-  size?: 'md' | 'lg'
+  variant?:
+    | 'default'
+    | 'active'
+    | 'embla-arrow'
+    | 'embla-dot'
+    | 'embla-dot-active'
   children?: React.ReactNode
 }
 
 const Button = <T extends React.ElementType = 'button'>({
   as,
-  size = 'md',
+  variant = 'default',
   children,
   ...rest
 }: ButtonProps<T> &
   Omit<React.ComponentPropsWithoutRef<T>, keyof ButtonProps<T>>) => {
   const Wrapper = as || 'button'
-  const customClasses = `btn default ${size}`
+  const customClasses = `btn ${variant}`
   return (
     <Wrapper {...rest} className={customClasses}>
       {children}
