@@ -16,7 +16,7 @@ const ThemeSwitcher = () => {
 
   return (
     <Button
-      onPressedChange={() => setTheme(isDark ? 'light' : 'dark')}
+      onClick={() => setTheme(isDark ? 'light' : 'dark')}
       as={Toggle.Root}
     >
       {!mounted ? (

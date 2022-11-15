@@ -7,7 +7,6 @@ html {
   scroll-behavior: smooth;
 }
 
-
 @layer base {
   body {
     @apply bg-white bg-light-texture text-mauve-12 dark:bg-mauve-1 dark:bg-dark-texture;
@@ -32,19 +31,19 @@ html {
   }
 
   .btn {
-   @apply shadow flex items-center justify-center space-x-1.5 relative bg-mauve-3 font-semibold text-sm font-mono rounded-lg cursor-pointer leading-none outline-none h-10 px-3.5 md:h-11 md:px-4 hover:shadow-button-hover focus:shadow-button-focus;
+   @apply transition-all duration-200 ease-in-out drop-shadow flex items-center justify-center space-x-1.5 relative bg-mauve-3 font-semibold text-sm font-mono rounded-lg cursor-pointer leading-none outline-none h-10 px-3.5 md:h-11 md:px-4 hover:shadow-button-hover focus:shadow-button-focus;
   }
 
   .embla-arrow {
-    @apply h-6 px-4 rounded-xl hover:text-mauve-12
+    @apply h-6 px-4 rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-none
   }
 
   .embla-dot {
-    @apply h-2 px-2 md:px-3 transition-all duration-500 ease-in-out;
+    @apply h-2 px-2 md:px-3 transition-all duration-300 ease-in-out;
   }
 
   .embla-dot-active {
-    @apply h-2 px-4 md:px-6 bg-gradient-to-l from-violet-5 to-crimson-5 transition-all duration-500 delay-200 ease-in-out;
+    @apply h-2 px-4 md:px-6 bg-gradient-to-l from-violet-5 to-crimson-5 transition-all duration-300 delay-200 ease-in-out;
   }
 
   .default {
