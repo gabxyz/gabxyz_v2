@@ -30,38 +30,29 @@ html {
     @apply flex-[0_0_auto] max-w-full p-2.5;
   }
 
-  .btn {
-   @apply transition-all duration-200 ease-in-out drop-shadow flex items-center justify-center space-x-1.5 relative bg-mauve-3 font-semibold text-sm font-mono rounded-lg cursor-pointer leading-none outline-none h-10 px-3.5 md:h-11 md:px-4 hover:shadow-button-hover focus:shadow-button-focus;
+  .baseBtn { 
+    @apply inline-flex items-center justify-center space-x-1.5 relative bg-mauve-3 text-sm font-semibold font-mono rounded-lg cursor-pointer leading-none outline-none drop-shadow h-10 px-3.5 md:h-11 md:px-4 hover:bg-mauve-4 hover:shadow-button-hover focus:shadow-button-focus motion-safe:duration-150 motion-safe:ease-productive-standard;
   }
 
-  .embla-arrow {
-    @apply h-6 px-4 rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-none
-  }
-
-  .embla-dot {
-    @apply h-2 px-2 md:px-3 transition-all duration-300 ease-in-out;
-  }
-
-  .embla-dot-active {
-    @apply h-2 px-4 md:px-6 bg-gradient-to-l from-violet-5 to-crimson-5 transition-all duration-300 delay-200 ease-in-out;
-  }
-
-  .default {
-    @apply bg-gradient-to-b hover:from-violet-4 hover:to-crimson-4;
-  }
-
-  .active {
-    @apply bg-gradient-to-b from-violet-5 to-crimson-5;
-  }
-
-  .mobile {
+  .mobileLink {
     @apply w-full justify-start font-sans bg-transparent shadow-none;
   }
 
-  .mobile-active {
-    @apply w-full justify-start font-sans font-bold bg-gradient-to-r from-violet-5 to-crimson-5 shadow-md;
+  .activeLink {
+    @apply w-full justify-start font-sans font-bold bg-gradient-to-r from-violet-5 to-crimson-5 md:bg-gradient-to-b md:font-semibold md:w-auto md:justify-center;
   }
 
+  .emblaArrow {
+    @apply h-6 px-4 rounded-xl disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .emblaDot {
+    @apply h-2 px-2 md:px-3;
+  }
+
+  .activeEmblaDot {
+    @apply h-2 px-4 md:px-6 bg-gradient-to-l from-violet-5 to-crimson-5 delay-150;
+  }
 
 }
 

@@ -1,28 +1,43 @@
-interface ButtonProps<T extends React.ElementType> {
-  as?: T
+import React from 'react'
+
+import UnstyledLink, { UnstyledLinkProps } from './UnstyledLink'
+
+type btnVariants = {
   variant?:
-    | 'default'
-    | 'active'
-    | 'embla-arrow'
-    | 'embla-dot'
-    | 'embla-dot-active'
+    | 'mobileLink'
+    | 'activeLink'
+    | 'emblaArrow'
+    | 'emblaDot'
+    | 'activeEmblaDot'
+}
+
+interface ButtonProps
+  extends btnVariants,
+    React.ButtonHTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode
 }
 
-const Button = <T extends React.ElementType = 'button'>({
-  as,
-  variant = 'default',
-  children,
-  ...rest
-}: ButtonProps<T> &
-  Omit<React.ComponentPropsWithoutRef<T>, keyof ButtonProps<T>>) => {
-  const Wrapper = as || 'button'
-  const customClasses = `btn ${variant}`
-  return (
-    <Wrapper {...rest} className={customClasses}>
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ children, variant, ...rest }, forwardedRef) => (
+    <button ref={forwardedRef} className={`baseBtn ${variant}`} {...rest}>
       {children}
-    </Wrapper>
+    </button>
   )
-}
+)
 
-export default Button
+type LinkBtnProps = UnstyledLinkProps & btnVariants
+
+const LinkButton = React.forwardRef<HTMLAnchorElement, LinkBtnProps>(
+  ({ variant, href, children, ...rest }, forwardedRef) => (
+    <UnstyledLink
+      href={href}
+      ref={forwardedRef}
+      className={`baseBtn ${variant}`}
+      {...rest}
+    >
+      {children}
+    </UnstyledLink>
+  )
+)
+
+export { Button, LinkButton }
