@@ -19,9 +19,6 @@ module.exports = {
     './src/layouts/**/*.tsx'
   ],
   darkMode: 'class',
-  corePlugins: {
-    aspectRatio: false
-  },
   theme: {
     fontSize: {
       xs: [
@@ -97,9 +94,24 @@ module.exports = {
           }
         }
       },
-      animation: {
-        'open-menu': 'in 0.2s ease-in-out',
-        'close-menu': 'out 0.2s ease-in-out'
+      animation: ({ theme }) => ({
+        'open-menu': `in 240ms ${theme(
+          'transitionTimingFunction.expressive-entrance'
+        )}`,
+        'close-menu': `out 150ms ${theme(
+          'transitionTimingFunction.productive-exit'
+        )}`
+      }),
+      transitionTimingFunction: {
+        /**
+         * See: https://carbondesignsystem.com/guidelines/motion/overview/
+         */
+        'productive-standard': 'cubic-bezier(0.2, 0, 0.38, 0.9)',
+        'productive-entrance': 'cubic-bezier(0, 0, 0.38, 0.9)',
+        'productive-exit': 'cubic-bezier(0.2, 0, 1, 0.9)',
+        'expressive-standard': 'cubic-bezier(0.4, 0.14, 0.3, 1)',
+        'expressive-entrance': 'cubic-bezier(0, 0, 0.3, 1)',
+        'expressive-exit': 'cubic-bezier(0.4, 0.14, 1, 1)'
       }
     }
   },
@@ -107,7 +119,6 @@ module.exports = {
     require('tailwindcss-radix')({ variantPrefix: 'rdx' }),
     require('windy-radix-palette'),
     require('@tailwindcss/line-clamp'),
-    require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/typography'),
     require('windy-radix-typography')
   ]

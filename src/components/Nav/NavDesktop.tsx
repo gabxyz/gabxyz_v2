@@ -11,10 +11,9 @@ import {
 } from '@radix-ui/react-icons'
 import { motion } from 'framer-motion'
 
-import NavLink from './NavLink'
 import Separator from 'components/Separator'
 import ThemeSwitcher from 'components/ThemeSwitcher'
-import Button from 'components/Button'
+import { LinkButton } from 'components/Button'
 
 const NavDesktop = () => {
   const router = useRouter()
@@ -81,16 +80,12 @@ const NavDesktop = () => {
             <Separator orientation="vertical" />
           </motion.span>
           <motion.div variants={header} className="flex gap-2">
-            <Button as="a" href="https://github.com/gabxyz" target="_blank">
+            <LinkButton href="https://github.com/gabxyz">
               <GitHubLogoIcon />
-            </Button>
-            <Button
-              as="a"
-              href="https://linkedin.com/in/gabxyz"
-              target="_blank"
-            >
+            </LinkButton>
+            <LinkButton href="https://linkedin.com/in/gabxyz">
               <LinkedInLogoIcon />
-            </Button>
+            </LinkButton>
           </motion.div>
         </div>
         <motion.div
@@ -101,9 +96,9 @@ const NavDesktop = () => {
             <NavMenu.List className="flex list-none gap-4">
               {pages.map(({ path, icon }) => (
                 <NavMenu.Item key={path}>
-                  <NavLink
+                  <LinkButton
                     href={path}
-                    variant={path === currentPath ? 'active' : 'default'}
+                    variant={path === currentPath ? 'activeLink' : undefined}
                   >
                     {icon}
                     {path === currentPath && (
@@ -117,7 +112,7 @@ const NavDesktop = () => {
                         }}
                       />
                     )}
-                  </NavLink>
+                  </LinkButton>
                 </NavMenu.Item>
               ))}
             </NavMenu.List>

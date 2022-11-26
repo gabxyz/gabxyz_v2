@@ -1,7 +1,8 @@
-import Base from 'layouts/Base'
-import { ThemeProvider } from 'next-themes'
-import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import type { AppProps } from 'next/app'
+import { ThemeProvider } from 'next-themes'
+
+import Base from 'layouts/Base'
 import 'styles/globals.css'
 
 function App({ Component, pageProps }: AppProps) {

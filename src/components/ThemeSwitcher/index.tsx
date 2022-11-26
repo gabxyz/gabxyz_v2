@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 
 import * as Toggle from '@radix-ui/react-toggle'
 import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
-import Button from 'components/Button'
+import { Button } from 'components/Button'
 
 const ThemeSwitcher = () => {
   const [mounted, setMounted] = useState(false)
@@ -15,18 +15,17 @@ const ThemeSwitcher = () => {
   }, [])
 
   return (
-    <Button
-      onClick={() => setTheme(isDark ? 'light' : 'dark')}
-      as={Toggle.Root}
-    >
-      {!mounted ? (
-        <span className="h-[15px] w-[15px]"></span>
-      ) : isDark ? (
-        <SunIcon />
-      ) : (
-        <MoonIcon />
-      )}
-    </Button>
+    <Toggle.Root asChild>
+      <Button onClick={() => setTheme(isDark ? 'light' : 'dark')}>
+        {!mounted ? (
+          <span className="h-[15px] w-[15px]"></span>
+        ) : isDark ? (
+          <SunIcon />
+        ) : (
+          <MoonIcon />
+        )}
+      </Button>
+    </Toggle.Root>
   )
 }
 

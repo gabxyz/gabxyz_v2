@@ -6,7 +6,7 @@ import cn from 'classnames'
 import { motion } from 'framer-motion'
 import { ChevronRightIcon } from '@radix-ui/react-icons'
 
-import NavLink from 'components/Nav/NavLink'
+import { LinkButton } from 'components/Button'
 import Separator from 'components/Separator'
 import { CarouselContext } from 'components/Carousel'
 
@@ -67,7 +67,7 @@ const Card = ({
               objectFit="cover"
               objectPosition="center"
               className={cn(
-                'rounded-t-lg duration-500 ease-in-out group-hover:opacity-90',
+                'rounded-t-lg motion-safe:duration-150 motion-safe:ease-productive-standard group-hover:opacity-80',
                 isLoading ? 'grayscale blur-md' : 'grayscale-0 blur-0'
               )}
               onLoadingComplete={() => setLoading(false)}
@@ -85,10 +85,10 @@ const Card = ({
           <Separator />
           <div className="flex w-full items-center justify-between">
             <p className="font-mono text-sm font-bold">{stack.join(' :: ')}</p>
-            <NavLink href={`projects/${slug}`}>
+            <LinkButton href={`projects/${slug}`}>
               <span>Learn more</span>
               <ChevronRightIcon />
-            </NavLink>
+            </LinkButton>
           </div>
         </div>
       </motion.div>

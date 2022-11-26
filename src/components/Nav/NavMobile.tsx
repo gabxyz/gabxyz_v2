@@ -14,10 +14,9 @@ import {
   LinkedInLogoIcon
 } from '@radix-ui/react-icons'
 
-import NavLink from './NavLink'
 import Separator from 'components/Separator'
 import ThemeSwitcher from 'components/ThemeSwitcher'
-import Button from 'components/Button'
+import { Button, LinkButton } from 'components/Button'
 
 const NavMobile = () => {
   const [open, setOpen] = useState(false)
@@ -96,18 +95,22 @@ const NavMobile = () => {
         className="flex justify-between rounded-xl bg-mauve-2 p-2 shadow-md"
       >
         <DialogMenu.Root open={open} onOpenChange={() => setOpen(!open)}>
-          <Button as={DialogMenu.Trigger}>
-            <HamburgerMenuIcon />
-          </Button>
+          <DialogMenu.Trigger asChild>
+            <Button>
+              <HamburgerMenuIcon />
+            </Button>
+          </DialogMenu.Trigger>
           <DialogMenu.Overlay className="fixed inset-0 z-20 bg-blackA-9 backdrop-blur-[1px]" />
           <DialogMenu.Content className="fixed inset-0 z-30 w-4/5  border-r border-mauve-6 bg-mauve-2 p-4 rdx-state-closed:animate-close-menu rdx-state-open:animate-open-menu">
             <motion.div
               variants={container}
               className="flex justify-between gap-2"
             >
-              <Button as={DialogMenu.Close}>
-                <Cross1Icon />
-              </Button>
+              <DialogMenu.Close asChild>
+                <Button>
+                  <Cross1Icon />
+                </Button>
+              </DialogMenu.Close>
               <div className="flex flex-col items-end gap-2">
                 <div className="whitespace-nowrap leading-tight">
                   <motion.h1 variants={header} className="font-semibold">
@@ -129,16 +132,16 @@ const NavMobile = () => {
               >
                 {pages.map(({ title, path, icon }) => (
                   <motion.li variants={item} key={title}>
-                    <NavLink
+                    <LinkButton
                       href={path}
                       variant={
-                        path === currentPath ? 'mobile-active' : 'mobile'
+                        path === currentPath ? 'activeLink' : 'mobileLink'
                       }
                       onClick={() => setOpen(false)}
                     >
                       {icon}
                       <span>{title}</span>
-                    </NavLink>
+                    </LinkButton>
                   </motion.li>
                 ))}
                 <motion.span variants={item} className="m-2 w-full self-center">
@@ -149,13 +152,13 @@ const NavMobile = () => {
                   className="flex flex-col gap-2 text-sm font-semibold"
                 >
                   {social.map(({ title, path, icon }) => (
-                    <Button as="a" href={path} key={path} target="_blank">
+                    <LinkButton href={path} key={path}>
                       <span className="flex h-full w-full items-center gap-2 font-sans">
                         {icon}
                         {title}
                       </span>
                       <ArrowTopRightIcon className="text-mauve-11" />
-                    </Button>
+                    </LinkButton>
                   ))}
                 </motion.div>
               </motion.ul>

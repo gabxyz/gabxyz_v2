@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useState, createContext } from 'react'
+
 import useEmblaCarousel, { EmblaCarouselType } from 'embla-carousel-react'
 import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons'
-import Button from 'components/Button'
+import { Button } from 'components/Button'
 
 interface ContextValue {
   embla: EmblaCarouselType | undefined
@@ -74,7 +75,7 @@ const Carousel = ({ children }: CarouselProps) => {
         </div>
         <div className="mx-auto flex w-3/4 min-w-fit items-center justify-between gap-2 rounded-xl bg-mauve-2 p-3 shadow-md ">
           <Button
-            variant="embla-arrow"
+            variant="emblaArrow"
             onClick={scrollPrev}
             disabled={!prevBtnEnabled}
           >
@@ -86,14 +87,14 @@ const Carousel = ({ children }: CarouselProps) => {
               <Button
                 key={index}
                 variant={
-                  index === selectedIndex ? 'embla-dot-active' : 'embla-dot'
+                  index === selectedIndex ? 'activeEmblaDot' : 'emblaDot'
                 }
                 onClick={() => scrollTo(index)}
               />
             ))}
           </div>
           <Button
-            variant="embla-arrow"
+            variant="emblaArrow"
             onClick={scrollNext}
             disabled={!nextBtnEnabled}
           >
