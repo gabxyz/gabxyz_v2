@@ -51,7 +51,7 @@ html {
   }
 
   .activeEmblaDot {
-    @apply h-2 px-4 md:px-6 bg-gradient-to-l from-violet-5 to-crimson-5 delay-150;
+    @apply h-2 px-4 md:px-6 bg-gradient-to-l from-violet-5 to-crimson-5 motion-safe:duration-300;
   }
 
 }

@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState, createContext } from 'react'
 import useEmblaCarousel, { EmblaCarouselType } from 'embla-carousel-react'
 import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons'
 import { Button } from 'components/Button'
+import Tooltip from 'components/Tooltip'
 
 interface ContextValue {
   embla: EmblaCarouselType | undefined
@@ -74,13 +75,15 @@ const Carousel = ({ children }: CarouselProps) => {
           </div>
         </div>
         <div className="mx-auto flex w-3/4 min-w-fit items-center justify-between gap-2 rounded-xl bg-mauve-2 p-3 shadow-md ">
-          <Button
-            variant="emblaArrow"
-            onClick={scrollPrev}
-            disabled={!prevBtnEnabled}
-          >
-            <ArrowLeftIcon />
-          </Button>
+          <Tooltip content={prevBtnEnabled && 'Previous'}>
+            <Button
+              variant="emblaArrow"
+              onClick={scrollPrev}
+              disabled={!prevBtnEnabled}
+            >
+              <ArrowLeftIcon />
+            </Button>
+          </Tooltip>
 
           <div className="flex items-center gap-2">
             {scrollSnaps.map((_, index) => (
@@ -93,13 +96,15 @@ const Carousel = ({ children }: CarouselProps) => {
               />
             ))}
           </div>
-          <Button
-            variant="emblaArrow"
-            onClick={scrollNext}
-            disabled={!nextBtnEnabled}
-          >
-            <ArrowRightIcon />
-          </Button>
+          <Tooltip content={nextBtnEnabled && 'Next'}>
+            <Button
+              variant="emblaArrow"
+              onClick={scrollNext}
+              disabled={!nextBtnEnabled}
+            >
+              <ArrowRightIcon />
+            </Button>
+          </Tooltip>
         </div>
       </div>
     </CarouselContext.Provider>
