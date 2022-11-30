@@ -92,6 +92,23 @@ module.exports = {
           '100%': {
             transform: 'translateX(-100%)'
           }
+        },
+
+        'slide-up-fade': {
+          '0%': { opacity: 0, transform: 'translateY(0.25rem)' },
+          '100%': { opacity: 1, transform: 'translateY(0)' }
+        },
+        'slide-right-fade': {
+          '0%': { opacity: 0, transform: 'translateX(-0.25rem)' },
+          '100%': { opacity: 1, transform: 'translateX(0)' }
+        },
+        'slide-down-fade': {
+          '0%': { opacity: 0, transform: 'translateY(-0.25rem)' },
+          '100%': { opacity: 1, transform: 'translateY(0)' }
+        },
+        'slide-left-fade': {
+          '0%': { opacity: 0, transform: 'translateX(0.25rem)' },
+          '100%': { opacity: 1, transform: 'translateX(0)' }
         }
       },
       animation: ({ theme }) => ({
@@ -100,6 +117,19 @@ module.exports = {
         )}`,
         'close-menu': `out 150ms ${theme(
           'transitionTimingFunction.productive-exit'
+        )}`,
+
+        'slide-up-fade': `slide-down-fade 150ms ${theme(
+          'transitionTimingFunction.productive-standard'
+        )}`,
+        'slide-down-fade': `slide-up-fade 150ms ${theme(
+          'transitionTimingFunction.productive-standard'
+        )}`,
+        'slide-right-fade': `slide-left-fade 150ms ${theme(
+          'transitionTimingFunction.productive-standard'
+        )}`,
+        'slide-left-fade': `slide-right-fade 150ms ${theme(
+          'transitionTimingFunction.productive-standard'
         )}`
       }),
       transitionTimingFunction: {
