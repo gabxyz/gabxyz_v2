@@ -1,19 +1,13 @@
-import type { ReactElement } from 'react'
 import { useRouter } from 'next/router'
 
 import * as NavMenu from '@radix-ui/react-navigation-menu'
-import {
-  BackpackIcon,
-  GitHubLogoIcon,
-  HomeIcon,
-  InfoCircledIcon,
-  LinkedInLogoIcon
-} from '@radix-ui/react-icons'
 import { motion } from 'framer-motion'
 
 import Separator from 'components/Separator'
 import ThemeSwitcher from 'components/ThemeSwitcher'
 import { LinkButton } from 'components/Button'
+import Tooltip from 'components/Tooltip'
+import { pages, social } from './index'
 
 const NavDesktop = () => {
   const router = useRouter()
@@ -41,24 +35,6 @@ const NavDesktop = () => {
     }
   }
 
-  const pages: { title: string; path: string; icon: ReactElement }[] = [
-    {
-      title: 'Home',
-      path: '/',
-      icon: <HomeIcon />
-    },
-    {
-      title: 'Projects',
-      path: '/projects',
-      icon: <BackpackIcon />
-    },
-    {
-      title: 'About',
-      path: '/about',
-      icon: <InfoCircledIcon />
-    }
-  ]
-
   return (
     <>
       <motion.div
@@ -80,12 +56,11 @@ const NavDesktop = () => {
             <Separator orientation="vertical" />
           </motion.span>
           <motion.div variants={header} className="flex gap-2">
-            <LinkButton href="https://github.com/gabxyz">
-              <GitHubLogoIcon />
-            </LinkButton>
-            <LinkButton href="https://linkedin.com/in/gabxyz">
-              <LinkedInLogoIcon />
-            </LinkButton>
+            {social.map(({ title, path, icon }) => (
+              <Tooltip key={path} content={title}>
+                <LinkButton href={path}>{icon}</LinkButton>
+              </Tooltip>
+            ))}
           </motion.div>
         </div>
         <motion.div
@@ -94,25 +69,27 @@ const NavDesktop = () => {
         >
           <NavMenu.Root>
             <NavMenu.List className="flex list-none gap-4">
-              {pages.map(({ path, icon }) => (
+              {pages.map(({ path, icon, title }) => (
                 <NavMenu.Item key={path}>
-                  <LinkButton
-                    href={path}
-                    variant={path === currentPath ? 'activeLink' : undefined}
-                  >
-                    {icon}
-                    {path === currentPath && (
-                      <motion.span
-                        className="absolute -inset-x-1.5 -top-2 h-px w-full rounded-full bg-gradient-to-r from-violet-9 to-crimson-9"
-                        layoutId="topline"
-                        transition={{
-                          type: 'spring',
-                          duration: 0.8,
-                          stiffness: 80
-                        }}
-                      />
-                    )}
-                  </LinkButton>
+                  <Tooltip content={title}>
+                    <LinkButton
+                      href={path}
+                      variant={path === currentPath ? 'activeLink' : undefined}
+                    >
+                      {icon}
+                      {path === currentPath && (
+                        <motion.span
+                          className="absolute -inset-x-1.5 -top-2 h-px w-full rounded-full bg-gradient-to-r from-violet-9 to-crimson-9"
+                          layoutId="topline"
+                          transition={{
+                            type: 'spring',
+                            duration: 0.8,
+                            stiffness: 80
+                          }}
+                        />
+                      )}
+                    </LinkButton>
+                  </Tooltip>
                 </NavMenu.Item>
               ))}
             </NavMenu.List>

@@ -1,22 +1,18 @@
-import { ReactElement, useState } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/router'
 
 import { motion } from 'framer-motion'
 import * as DialogMenu from '@radix-ui/react-dialog'
 import {
   ArrowTopRightIcon,
-  BackpackIcon,
   Cross1Icon,
-  GitHubLogoIcon,
-  HamburgerMenuIcon,
-  HomeIcon,
-  InfoCircledIcon,
-  LinkedInLogoIcon
+  HamburgerMenuIcon
 } from '@radix-ui/react-icons'
 
 import Separator from 'components/Separator'
 import ThemeSwitcher from 'components/ThemeSwitcher'
 import { Button, LinkButton } from 'components/Button'
+import { pages, social } from './index'
 
 const NavMobile = () => {
   const [open, setOpen] = useState(false)
@@ -54,37 +50,6 @@ const NavMobile = () => {
     hidden: { opacity: 0, x: -80 },
     show: { opacity: 1, x: 0 }
   }
-
-  const pages: { title: string; path: string; icon: ReactElement }[] = [
-    {
-      title: 'Home',
-      path: '/',
-      icon: <HomeIcon />
-    },
-    {
-      title: 'Projects',
-      path: '/projects',
-      icon: <BackpackIcon />
-    },
-    {
-      title: 'About',
-      path: '/about',
-      icon: <InfoCircledIcon />
-    }
-  ]
-
-  const social: { title: string; path: string; icon: ReactElement }[] = [
-    {
-      title: 'Github',
-      path: 'https://github.com/gabxyz',
-      icon: <GitHubLogoIcon />
-    },
-    {
-      title: 'LinkedIn',
-      path: 'https://linkedin.com/in/gabxyz',
-      icon: <LinkedInLogoIcon />
-    }
-  ]
 
   return (
     <>
