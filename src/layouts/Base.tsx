@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import { AnimatePresence, motion } from 'framer-motion'
 import Nav from 'components/Nav'
+import Footer from 'components/Footer'
 
 type BaseProps = {
   children: React.ReactNode
@@ -25,7 +26,7 @@ const Base = ({ children }: BaseProps) => {
 
   return (
     <>
-      <div className="relative flex flex-col p-2 md:py-8">
+      <div className="mx-auto flex min-h-screen w-full max-w-4xl flex-col p-2 pb-4 md:py-8">
         <Nav />
         <AnimatePresence mode="wait">
           <motion.main
@@ -39,11 +40,12 @@ const Base = ({ children }: BaseProps) => {
               damping: 25,
               stiffness: 250
             }}
-            className="my-12 mx-6"
+            className="relative my-12 mx-6 flex flex-1 flex-col"
           >
             {children}
           </motion.main>
         </AnimatePresence>
+        <Footer />
       </div>
     </>
   )

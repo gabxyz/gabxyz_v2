@@ -2,20 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  min-width: 360px;
-  scroll-behavior: smooth;
-}
 
 @layer base {
   body {
-    @apply bg-white bg-light-texture text-mauve-12 dark:bg-mauve-1 dark:bg-dark-texture;
+    @apply min-w-[360px] scroll-smooth h-full antialiased bg-white bg-light-texture text-mauve-12 dark:bg-mauve-1 dark:bg-dark-texture;
   }
 }
 
 @layer components {
   .embla {
-    @apply mx-auto relative space-y-4 transition-opacity duration-500;
+    @apply relative space-y-4 transition-opacity duration-500;
   }
 
   .embla__viewport {

@@ -44,18 +44,21 @@ const NavDesktop = () => {
         className="flex items-center justify-between rounded-xl bg-mauve-2 p-6 shadow-lg"
       >
         <div className="flex items-center gap-2.5">
-          <div className="leading-none">
-            <motion.h1 variants={header} className="text-xl font-semibold">
+          <div className="flex flex-col justify-center -space-y-1">
+            <motion.h1 variants={header} className="text-base font-semibold">
               Gabriel Rodrigues
             </motion.h1>
-            <motion.h2 variants={header} className="indent-px text-mauve-11">
+            <motion.h2
+              variants={header}
+              className="indent-px text-sm font-light text-mauve-11"
+            >
               Front-end Developer
             </motion.h2>
           </div>
           <motion.span variants={header} className="h-8">
             <Separator orientation="vertical" />
           </motion.span>
-          <motion.div variants={header} className="flex gap-2">
+          <motion.div variants={header} className="flex gap-2.5">
             {social.map(({ title, path, icon }) => (
               <Tooltip key={path} content={title}>
                 <LinkButton href={path}>{icon}</LinkButton>
