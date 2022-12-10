@@ -8,66 +8,61 @@ import ThemeSwitcher from 'components/ThemeSwitcher'
 import { LinkButton } from 'components/Button'
 import Tooltip from 'components/Tooltip'
 import { pages, social } from './index'
+import UnstyledLink from 'components/Button/UnstyledLink'
 
 const NavDesktop = () => {
   const router = useRouter()
   const currentPath = router.asPath
 
-  const header = {
-    hidden: { opacity: 0, x: -80 },
-    show: { opacity: 1, x: 0 }
-  }
-
-  const nav = {
-    hidden: { opacity: 0, y: -80 },
-    show: { opacity: 1, y: 0 }
-  }
-
-  const container = {
-    hidden: { opacity: 0, y: -60 },
+  const navDock = {
+    hidden: { opacity: 0, y: 60 },
     show: {
       opacity: 1,
       y: 0,
-      transition: {
-        delayChildren: 0.2,
-        staggerChildren: 0.1
-      }
+      transition: { delayChildren: 0.3 }
     }
+  }
+
+  const navItems = {
+    hidden: { opacity: 0, y: -40 },
+    show: { opacity: 1, y: 0 }
   }
 
   return (
     <>
       <motion.div
-        variants={container}
+        variants={navDock}
         initial="hidden"
         animate="show"
         className="flex items-center justify-between rounded-xl bg-mauve-2 p-6 shadow-lg"
       >
-        <div className="flex items-center gap-2.5">
-          <div className="flex flex-col justify-center -space-y-1">
-            <motion.h1 variants={header} className="text-base font-semibold">
-              Gabriel Rodrigues
-            </motion.h1>
-            <motion.h2
-              variants={header}
-              className="indent-px text-sm font-light text-mauve-11"
-            >
-              Front-end Developer
-            </motion.h2>
+        <motion.div variants={navItems} className="flex items-center gap-4">
+          <div className="flex flex-col -space-y-1">
+            <h1 className="text-lg font-semibold">
+              <UnstyledLink
+                href="/"
+                className="hover:text-mauve-11 motion-safe:duration-150 motion-safe:ease-productive-standard"
+              >
+                gabxyz
+              </UnstyledLink>
+            </h1>
+            <h2 className="indent-px text-sm font-light text-mauve-11">
+              front-end dev :: ui/ux
+            </h2>
           </div>
-          <motion.span variants={header} className="h-8">
+          <span className="h-8">
             <Separator orientation="vertical" />
-          </motion.span>
-          <motion.div variants={header} className="flex gap-2.5">
+          </span>
+          <motion.div className="flex gap-2.5">
             {social.map(({ title, path, icon }) => (
               <Tooltip key={path} content={title}>
                 <LinkButton href={path}>{icon}</LinkButton>
               </Tooltip>
             ))}
           </motion.div>
-        </div>
+        </motion.div>
         <motion.div
-          variants={nav}
+          variants={navItems}
           className="flex items-center justify-between gap-4"
         >
           <NavMenu.Root>

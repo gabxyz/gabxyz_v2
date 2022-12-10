@@ -19,19 +19,11 @@ const NavMobile = () => {
   const router = useRouter()
   const currentPath = router.asPath
 
-  const header = {
-    hidden: { opacity: 0, y: -60 },
-    show: { opacity: 1, y: 0 }
-  }
-  const containerNav = {
+  const navDock = {
     hidden: { opacity: 0, y: -60 },
     show: {
       opacity: 1,
-      y: 0,
-      transition: {
-        delayChildren: 0.2,
-        staggerChildren: 0.1
-      }
+      y: 0
     }
   }
 
@@ -54,7 +46,7 @@ const NavMobile = () => {
   return (
     <>
       <motion.div
-        variants={containerNav}
+        variants={navDock}
         initial="hidden"
         animate="show"
         className="flex justify-between rounded-xl bg-mauve-2 p-2 shadow-md"
@@ -77,17 +69,15 @@ const NavMobile = () => {
                 </Button>
               </DialogMenu.Close>
               <div className="flex flex-col items-end gap-2">
-                <div className="whitespace-nowrap leading-tight">
-                  <motion.h1 variants={header} className="font-semibold">
-                    Gabriel Rodrigues
-                  </motion.h1>
-                  <motion.h2
-                    variants={header}
-                    className="indent-px text-sm text-mauve-11"
-                  >
-                    Front-end Developer
-                  </motion.h2>
-                </div>
+                <motion.div
+                  variants={item}
+                  className="whitespace-nowrap leading-tight"
+                >
+                  <h1 className="font-semibold">gabxyz</h1>
+                  <h2 className="indent-px text-sm text-mauve-11">
+                    front-end dev :: ui/ux
+                  </h2>
+                </motion.div>
               </div>
             </motion.div>
             <nav aria-label="Main Navigation">
