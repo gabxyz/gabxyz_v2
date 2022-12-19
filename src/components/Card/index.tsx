@@ -85,7 +85,7 @@ const Card = ({
           <Separator />
           <div className="flex w-full items-center justify-between">
             <p className="font-mono text-sm font-bold">{stack.join(' :: ')}</p>
-            <LinkButton href={`projects/${slug}`}>
+            <LinkButton href={`/projects/${slug}`}>
               <span>Learn more</span>
               <ChevronRightIcon />
             </LinkButton>

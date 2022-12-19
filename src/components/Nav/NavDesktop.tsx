@@ -12,7 +12,6 @@ import UnstyledLink from 'components/Button/UnstyledLink'
 
 const NavDesktop = () => {
   const router = useRouter()
-  const currentPath = router.asPath
 
   const navDock = {
     hidden: { opacity: 0, y: 60 },
@@ -39,10 +38,7 @@ const NavDesktop = () => {
         <motion.div variants={navItems} className="flex items-center gap-4">
           <div className="flex flex-col -space-y-1">
             <h1 className="text-lg font-semibold">
-              <UnstyledLink
-                href="/"
-                className="hover:text-mauve-11 motion-safe:duration-150 motion-safe:ease-productive-standard"
-              >
+              <UnstyledLink href="/" className="linkGradient">
                 gabxyz
               </UnstyledLink>
             </h1>
@@ -72,10 +68,12 @@ const NavDesktop = () => {
                   <Tooltip content={title}>
                     <LinkButton
                       href={path}
-                      variant={path === currentPath ? 'activeLink' : undefined}
+                      variant={
+                        router.pathname === path ? 'activeLink' : undefined
+                      }
                     >
                       {icon}
-                      {path === currentPath && (
+                      {router.pathname === path && (
                         <motion.span
                           className="absolute -inset-x-1.5 -top-2 h-px w-full rounded-full bg-gradient-to-r from-violet-9 to-crimson-9"
                           layoutId="topline"

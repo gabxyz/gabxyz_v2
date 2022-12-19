@@ -13,6 +13,7 @@ import Separator from 'components/Separator'
 import ThemeSwitcher from 'components/ThemeSwitcher'
 import { Button, LinkButton } from 'components/Button'
 import { pages, social } from './index'
+import UnstyledLink from 'components/Button/UnstyledLink'
 
 const NavMobile = () => {
   const [open, setOpen] = useState(false)
@@ -68,17 +69,19 @@ const NavMobile = () => {
                   <Cross1Icon />
                 </Button>
               </DialogMenu.Close>
-              <div className="flex flex-col items-end gap-2">
-                <motion.div
-                  variants={item}
-                  className="whitespace-nowrap leading-tight"
-                >
-                  <h1 className="font-semibold">gabxyz</h1>
-                  <h2 className="indent-px text-sm text-mauve-11">
-                    front-end dev :: ui/ux
-                  </h2>
-                </motion.div>
-              </div>
+              <motion.div
+                variants={item}
+                className="-space-y-1 truncate whitespace-nowrap"
+              >
+                <h1 className="font-semibold">
+                  <UnstyledLink href="/" className="linkGradient">
+                    gabxyz
+                  </UnstyledLink>
+                </h1>
+                <h2 className="indent-px text-sm text-mauve-11">
+                  front-end dev :: ui/ux
+                </h2>
+              </motion.div>
             </motion.div>
             <nav aria-label="Main Navigation">
               <motion.ul

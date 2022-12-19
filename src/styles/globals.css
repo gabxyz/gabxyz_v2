@@ -5,11 +5,15 @@
 
 @layer base {
   body {
-    @apply min-w-[360px] scroll-smooth h-full antialiased bg-white bg-light-texture text-mauve-12 dark:bg-mauve-1 dark:bg-dark-texture;
+    @apply min-w-[360px] scroll-smooth min-h-screen antialiased bg-white bg-light-texture text-mauve-12 dark:bg-mauve-1 dark:bg-dark-texture;
   }
 }
 
 @layer components {
+  .linkGradient {
+    @apply bg-gradient-to-r from-purple-11 to-indigo-11 bg-clip-text text-transparent hover:opacity-90 motion-safe:duration-150 motion-safe:ease-productive-standard
+  }
+
   .embla {
     @apply relative space-y-4 transition-opacity duration-500;
   }

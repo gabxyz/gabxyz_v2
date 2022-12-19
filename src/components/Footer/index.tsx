@@ -10,7 +10,7 @@ const Footer = () => {
         <Tooltip content="do it">
           <UnstyledLink
             href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-            className="ml-px mr-0.5 font-semibold italic hover:text-mauve-12 motion-safe:duration-150 motion-safe:ease-productive-standard"
+            className="-ml-px mr-px font-bold italic hover:text-mauve-12 motion-safe:duration-150 motion-safe:ease-productive-standard"
           >
             lies{' '}
           </UnstyledLink>
